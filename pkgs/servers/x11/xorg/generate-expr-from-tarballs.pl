@@ -376,6 +376,7 @@ print OUT <<EOF;
   font-winitzki-cyrillic,
   font-xfree86-type1,
   gccmakedep,
+  iceauth,
   ico,
   imake,
   libapplewm,
@@ -496,6 +497,7 @@ self: with self; {
     editres
     fonttosfnt
     gccmakedep
+    iceauth
     ico
     imake
     libdmx
