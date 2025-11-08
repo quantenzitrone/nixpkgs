@@ -17811,6 +17811,9 @@ self: super: with self; {
     else
       null;
 
+  standard-crypt =
+    if pythonAtLeast "3.13" then callPackage ../development/python-modules/standard-crypt { } else null;
+
   standardwebhooks = callPackage ../development/python-modules/standardwebhooks { };
 
   stanio = callPackage ../development/python-modules/stanio { };
