@@ -336,6 +336,7 @@ print OUT <<EOF;
   appres,
   bdftopcf,
   bitmap,
+  editres,
   font-adobe-100dpi,
   font-adobe-75dpi,
   font-adobe-utopia-100dpi,
@@ -491,6 +492,7 @@ self: with self; {
     appres
     bdftopcf
     bitmap
+    editres
     gccmakedep
     ico
     imake
