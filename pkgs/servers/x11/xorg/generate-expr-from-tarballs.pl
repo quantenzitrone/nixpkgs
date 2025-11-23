@@ -436,6 +436,7 @@ print OUT <<EOF;
   oclock,
   pixman,
   sessreg,
+  setxkbmap,
   smproxy,
   tab-window-manager,
   transset,
@@ -516,6 +517,7 @@ self: with self; {
     oclock
     pixman
     sessreg
+    setxkbmap
     smproxy
     transset
     viewres
