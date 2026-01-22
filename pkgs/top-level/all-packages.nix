@@ -2488,33 +2488,33 @@ with pkgs;
 
   chewing-editor = libsForQt5.callPackage ../applications/misc/chewing-editor { };
 
-  fcitx5 = callPackage ../tools/inputmethods/fcitx5 { };
+  fcitx5 = callPackage ../qt-packages/fcitx5 { };
 
-  fcitx5-bamboo = callPackage ../tools/inputmethods/fcitx5/fcitx5-bamboo.nix { };
+  fcitx5-bamboo = callPackage ../qt-packages/fcitx5/fcitx5-bamboo.nix { };
 
-  fcitx5-skk = qt6Packages.callPackage ../tools/inputmethods/fcitx5/fcitx5-skk.nix { };
+  fcitx5-skk = qt6Packages.callPackage ../qt-packages/fcitx5/fcitx5-skk.nix { };
 
-  fcitx5-anthy = callPackage ../tools/inputmethods/fcitx5/fcitx5-anthy.nix { };
+  fcitx5-anthy = callPackage ../qt-packages/fcitx5/fcitx5-anthy.nix { };
 
-  fcitx5-chewing = callPackage ../tools/inputmethods/fcitx5/fcitx5-chewing.nix { };
+  fcitx5-chewing = callPackage ../qt-packages/fcitx5/fcitx5-chewing.nix { };
 
-  fcitx5-lua = callPackage ../tools/inputmethods/fcitx5/fcitx5-lua.nix { lua = lua5_3; };
+  fcitx5-lua = callPackage ../qt-packages/fcitx5/fcitx5-lua.nix { lua = lua5_3; };
 
-  fcitx5-m17n = callPackage ../tools/inputmethods/fcitx5/fcitx5-m17n.nix { };
+  fcitx5-m17n = callPackage ../qt-packages/fcitx5/fcitx5-m17n.nix { };
 
   fcitx5-openbangla-keyboard = libsForQt5.callPackage ../applications/misc/openbangla-keyboard {
     withFcitx5Support = true;
   };
 
-  fcitx5-gtk = callPackage ../tools/inputmethods/fcitx5/fcitx5-gtk.nix { };
+  fcitx5-gtk = callPackage ../qt-packages/fcitx5/fcitx5-gtk.nix { };
 
-  fcitx5-hangul = callPackage ../tools/inputmethods/fcitx5/fcitx5-hangul.nix { };
+  fcitx5-hangul = callPackage ../qt-packages/fcitx5/fcitx5-hangul.nix { };
 
-  fcitx5-rime = callPackage ../tools/inputmethods/fcitx5/fcitx5-rime.nix { };
+  fcitx5-rime = callPackage ../qt-packages/fcitx5/fcitx5-rime.nix { };
 
-  fcitx5-table-extra = callPackage ../tools/inputmethods/fcitx5/fcitx5-table-extra.nix { };
+  fcitx5-table-extra = callPackage ../qt-packages/fcitx5/fcitx5-table-extra.nix { };
 
-  fcitx5-table-other = callPackage ../tools/inputmethods/fcitx5/fcitx5-table-other.nix { };
+  fcitx5-table-other = callPackage ../qt-packages/fcitx5/fcitx5-table-other.nix { };
 
   firezone-server = callPackage ../by-name/fi/firezone-server/package.nix {
     beamPackages = beam27Packages;
@@ -3419,7 +3419,7 @@ with pkgs;
     protobuf = protobuf_21;
   };
 
-  packagekit = callPackage ../tools/package-management/packagekit { };
+  packagekit = callPackage ../qt-packages/packagekit { };
 
   pakcs = callPackage ../development/compilers/pakcs { };
 
@@ -4176,7 +4176,7 @@ with pkgs;
   flutter332 = flutterPackages.v3_32;
   flutter329 = flutterPackages.v3_29;
 
-  fpc = callPackage ../development/compilers/fpc { };
+  fpc = callPackage ../qt-packages/fpc { };
 
   gambit = callPackage ../development/compilers/gambit { };
   gambit-unstable = callPackage ../development/compilers/gambit/unstable.nix { };
@@ -4781,16 +4781,16 @@ with pkgs;
   kotlin = callPackage ../development/compilers/kotlin { };
   kotlin-native = callPackage ../development/compilers/kotlin/native.nix { };
 
-  lazarus = callPackage ../development/compilers/fpc/lazarus.nix {
+  lazarus = callPackage ../qt-packages/fpc/lazarus.nix {
     fpc = fpc;
   };
 
-  lazarus-qt5 = libsForQt5.callPackage ../development/compilers/fpc/lazarus.nix {
+  lazarus-qt5 = libsForQt5.callPackage ../qt-packages/fpc/lazarus.nix {
     fpc = fpc;
     withQt = true;
   };
 
-  lazarus-qt6 = qt6Packages.callPackage ../development/compilers/fpc/lazarus.nix {
+  lazarus-qt6 = qt6Packages.callPackage ../qt-packages/fpc/lazarus.nix {
     fpc = fpc;
     withQt = true;
   };
@@ -6926,7 +6926,7 @@ with pkgs;
 
   gst_all_1 = recurseIntoAttrs (callPackage ../development/libraries/gstreamer { });
 
-  grantlee = libsForQt5.callPackage ../development/libraries/grantlee { };
+  grantlee = libsForQt5.callPackage ../qt-packages/grantlee { };
 
   glib = callPackage ../by-name/gl/glib/package.nix (
     let
@@ -6994,7 +6994,7 @@ with pkgs;
     withIcu = true;
   };
 
-  herqq = libsForQt5.callPackage ../development/libraries/herqq { };
+  herqq = libsForQt5.callPackage ../qt-packages/herqq { };
 
   highfive-mpi = highfive.override { hdf5 = hdf5-mpi; };
 
@@ -7681,7 +7681,7 @@ with pkgs;
 
   podofo = podofo_1_0;
 
-  poppler = callPackage ../development/libraries/poppler { lcms = lcms2; };
+  poppler = callPackage ../qt-packages/poppler { lcms = lcms2; };
 
   poppler_gi = lowPrio (
     poppler.override {
