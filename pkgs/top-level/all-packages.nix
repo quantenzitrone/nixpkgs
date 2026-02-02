@@ -8781,8 +8781,6 @@ with pkgs;
 
   scalene = with python3Packages; toPythonApplication scalene;
 
-  shairplay = callPackage ../servers/shairplay { avahi = avahi-compat; };
-
   shairport-sync-airplay2 = shairport-sync.override {
     enableAirplay2 = true;
   };
