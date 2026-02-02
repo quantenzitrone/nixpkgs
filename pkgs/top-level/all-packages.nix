@@ -8288,11 +8288,6 @@ with pkgs;
 
   dodgy = with python3Packages; toPythonApplication dodgy;
 
-  prosody = callPackage ../servers/xmpp/prosody {
-    withExtraLibs = [ ];
-    withExtraLuaPackages = _: [ ];
-  };
-
   inherit (callPackages ../servers/firebird { })
     firebird_4
     firebird_3
