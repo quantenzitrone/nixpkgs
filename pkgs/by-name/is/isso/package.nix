@@ -1,16 +1,14 @@
 {
-  nodejs,
   lib,
   python3Packages,
   fetchFromGitHub,
   nixosTests,
   fetchNpmDeps,
+  nodejs_20,
   npmHooks,
 }:
 
-with python3Packages;
-
-buildPythonApplication rec {
+python3Packages.buildPythonApplication rec {
   pname = "isso";
   version = "0.13.0";
   format = "setuptools";
@@ -38,7 +36,7 @@ buildPythonApplication rec {
       --replace "self.client.delete_cookie('localhost.local', '1')" "self.client.delete_cookie(key='1', domain='localhost')"
   '';
 
-  propagatedBuildInputs = [
+  propagatedBuildInputs = with python3Packages; [
     itsdangerous
     jinja2
     misaka
@@ -49,10 +47,10 @@ buildPythonApplication rec {
   ];
 
   nativeBuildInputs = [
-    cffi
-    sphinxHook
-    sphinx
-    nodejs
+    python3Packages.cffi
+    python3Packages.sphinxHook
+    python3Packages.sphinx
+    nodejs_20
     npmHooks.npmConfigHook
   ];
 
@@ -66,8 +64,8 @@ buildPythonApplication rec {
   '';
 
   nativeCheckInputs = [
-    pytestCheckHook
-    pytest-cov-stub
+    python3Packages.pytestCheckHook
+    python3Packages.pytest-cov-stub
   ];
 
   passthru.tests = { inherit (nixosTests) isso; };

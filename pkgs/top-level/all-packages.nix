@@ -6813,10 +6813,6 @@ with pkgs;
     '';
   });
 
-  isso = callPackage ../servers/isso {
-    nodejs = nodejs_20;
-  };
-
   itk_5_2 = callPackage ../development/libraries/itk/5.2.x.nix {
     enableRtk = false;
   };
