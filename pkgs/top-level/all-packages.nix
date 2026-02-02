@@ -2080,8 +2080,6 @@ with pkgs;
 
   unify = with python3Packages; toPythonApplication unify;
 
-  persistent-evdev = python3Packages.callPackage ../servers/persistent-evdev { };
-
   inherit (import ../development/libraries/libsbsms pkgs)
     libsbsms
     libsbsms_2_0_2
