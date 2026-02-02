@@ -8,27 +8,23 @@
   libtasn1,
 
   # Optional Dependencies
-  pam ? null,
-  libidn ? null,
-  gnutls ? null,
+  usePam ? lib.meta.availableOn stdenv.hostPlatform pam && stdenv.hostPlatform.isLinux,
+  pam,
+  useLibidn ? lib.meta.availableOn stdenv.hostPlatform libidn,
+  libidn,
+  useGnutls ? lib.meta.availableOn stdenv.hostPlatform gnutls,
+  gnutls,
 }:
 
 let
-  shouldUsePkg =
-    pkg: if pkg != null && lib.meta.availableOn stdenv.hostPlatform pkg then pkg else null;
-
-  optPam = shouldUsePkg pam;
-  optLibidn = shouldUsePkg libidn;
-  optGnutls = shouldUsePkg gnutls;
-
   inherit (lib) enableFeature withFeature optionalString;
 in
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "shishi";
   version = "1.0.3";
 
   src = fetchurl {
-    url = "mirror://gnu/shishi/shishi-${version}.tar.gz";
+    url = "mirror://gnu/shishi/shishi-${finalAttrs.version}.tar.gz";
     hash = "sha256-lXmP/RLdAaT4jgMR7gPKSibly05ekFmkDk/E2fKRfpI=";
   };
 
@@ -39,19 +35,20 @@ stdenv.mkDerivation rec {
     libgcrypt
     libgpg-error
     libtasn1
-    optPam
-    optLibidn
-    optGnutls
+    # TODO use lib.optional instead of setting packages to null
+    (if usePam then pam else null)
+    (if useLibidn then libidn else null)
+    (if useGnutls then gnutls else null)
   ];
 
   configureFlags = [
     "--sysconfdir=/etc"
     "--localstatedir=/var"
     (enableFeature true "libgcrypt")
-    (enableFeature (optPam != null) "pam")
+    (enableFeature usePam "pam")
     (enableFeature true "ipv6")
-    (withFeature (optLibidn != null) "stringprep")
-    (enableFeature (optGnutls != null) "starttls")
+    (withFeature useLibidn "stringprep")
+    (enableFeature useGnutls "starttls")
     (enableFeature true "des")
     (enableFeature true "3des")
     (enableFeature true "aes")
@@ -70,11 +67,11 @@ stdenv.mkDerivation rec {
   postInstall = ''
     sed -i $out/lib/libshi{sa,shi}.la \
   ''
-  + optionalString (optLibidn != null) ''
-    -e 's,\(-lidn\),-L${optLibidn.out}/lib \1,' \
+  + optionalString useLibidn ''
+    -e 's,\(-lidn\),-L${libidn.out}/lib \1,' \
   ''
-  + optionalString (optGnutls != null) ''
-    -e 's,\(-lgnutls\),-L${optGnutls.out}/lib \1,' \
+  + optionalString useGnutls ''
+    -e 's,\(-lgnutls\),-L${gnutls.out}/lib \1,' \
   ''
   + ''
     -e 's,\(-lgcrypt\),-L${libgcrypt.out}/lib \1,' \
@@ -89,4 +86,4 @@ stdenv.mkDerivation rec {
     maintainers = with lib.maintainers; [ lovek323 ];
     platforms = lib.platforms.linux;
   };
-}
+})
