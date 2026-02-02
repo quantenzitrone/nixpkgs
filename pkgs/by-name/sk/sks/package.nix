@@ -2,7 +2,7 @@
   lib,
   stdenv,
   fetchFromGitHub,
-  ocamlPackages,
+  ocaml-ng,
   perl,
   zlib,
   db,
@@ -10,7 +10,7 @@
 }:
 
 let
-  inherit (ocamlPackages)
+  inherit (ocaml-ng.ocamlPackages_4_12)
     ocaml
     findlib
     cryptokit
@@ -18,7 +18,7 @@ let
     ;
 in
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "sks";
   version = "unstable-2021-02-04";
 
@@ -81,9 +81,9 @@ stdenv.mkDerivation rec {
       servers, and even wildly out-of-date servers, or servers that experience
       spotty connectivity, can fully synchronize with rest of the system.
     '';
-    inherit (src.meta) homepage;
+    inherit (finalAttrs.src.meta) homepage;
     license = lib.licenses.gpl2Plus;
     platforms = lib.platforms.linux;
     maintainers = [ ];
   };
-}
+})
