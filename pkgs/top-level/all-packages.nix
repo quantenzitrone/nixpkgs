@@ -8730,8 +8730,6 @@ with pkgs;
 
   pypiserver = with python3Packages; toPythonApplication pypiserver;
 
-  qremotecontrol-server = libsForQt5.callPackage ../servers/misc/qremotecontrol-server { };
-
   rethinkdb = callPackage ../servers/nosql/rethinkdb {
     stdenv = clangStdenv;
     libtool = cctools;

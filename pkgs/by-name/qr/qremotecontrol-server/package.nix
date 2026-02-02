@@ -2,9 +2,7 @@
   lib,
   stdenv,
   fetchgit,
-  qmake,
-  wrapQtAppsHook,
-  qtbase,
+  qt5,
   libxtst,
 }:
 
@@ -23,12 +21,12 @@ stdenv.mkDerivation {
   ];
 
   nativeBuildInputs = [
-    qmake
-    wrapQtAppsHook
+    qt5.qmake
+    qt5.wrapQtAppsHook
   ];
 
   buildInputs = [
-    qtbase
+    qt5.qtbase
     libxtst
   ];
 
