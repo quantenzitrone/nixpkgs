@@ -3343,8 +3343,6 @@ with pkgs;
 
   tabview = with python3Packages; toPythonApplication tabview;
 
-  tautulli = python3Packages.callPackage ../servers/tautulli { };
-
   inherit (callPackage ../development/tools/pnpm { })
     pnpm_8
     pnpm_9
