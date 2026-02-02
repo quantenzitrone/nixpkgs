@@ -3,7 +3,7 @@
   stdenv,
   fetchFromGitHub,
   pkg-config,
-  asciidoc,
+  asciidoc-full,
   jansson,
   jose,
   http-parser,
@@ -17,19 +17,19 @@
   nixosTests,
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "tang";
   version = "15";
 
   src = fetchFromGitHub {
     owner = "latchset";
     repo = "tang";
-    tag = "v${version}";
+    tag = "v${finalAttrs.version}";
     hash = "sha256-nlC2hdNzQZrfirjS2gX4oFp2OD1OdxmLsN03hfxD3ug=";
   };
 
   nativeBuildInputs = [
-    asciidoc
+    asciidoc-full
     meson
     ninja
     pkg-config
@@ -60,7 +60,7 @@ stdenv.mkDerivation rec {
       version = testers.testVersion {
         package = tang;
         command = "${tang}/libexec/tangd --version";
-        version = "tangd ${version}";
+        version = "tangd ${finalAttrs.version}";
       };
     };
     updateScript = gitUpdater { };
@@ -69,9 +69,9 @@ stdenv.mkDerivation rec {
   meta = {
     description = "Server for binding data to network presence";
     homepage = "https://github.com/latchset/tang";
-    changelog = "https://github.com/latchset/tang/releases/tag/v${version}";
+    changelog = "https://github.com/latchset/tang/releases/tag/v${finalAttrs.version}";
     maintainers = with lib.maintainers; [ fpletz ];
     license = lib.licenses.gpl3Plus;
     mainProgram = "tangd";
   };
-}
+})

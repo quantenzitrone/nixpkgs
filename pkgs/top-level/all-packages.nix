@@ -8606,10 +8606,6 @@ with pkgs;
     msVarsTemplate = stdenv.hostPlatform.isx86_64 || stdenv.hostPlatform.isAarch64;
   };
 
-  tang = callPackage ../servers/tang {
-    asciidoc = asciidoc-full;
-  };
-
   inherit (import ../servers/sql/postgresql pkgs)
     postgresqlVersions
     postgresqlJitVersions
