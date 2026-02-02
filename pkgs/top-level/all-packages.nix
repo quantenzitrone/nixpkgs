@@ -12654,18 +12654,9 @@ with pkgs;
     ;
   kops = kops_1_33;
 
-  lilypond = callPackage ../misc/lilypond { };
-
-  lilypond-unstable = callPackage ../misc/lilypond/unstable.nix { };
-
-  lilypond-unstable-with-fonts = callPackage ../misc/lilypond/with-fonts.nix {
+  lilypond-unstable-with-fonts = lilypond-with-fonts.override {
     lilypond = lilypond-unstable;
-    openlilylib-fonts = openlilylib-fonts.override {
-      lilypond = lilypond-unstable;
-    };
   };
-
-  lilypond-with-fonts = callPackage ../misc/lilypond/with-fonts.nix { };
 
   openlilylib-fonts = recurseIntoAttrs (callPackage ../misc/lilypond/fonts.nix { });
 

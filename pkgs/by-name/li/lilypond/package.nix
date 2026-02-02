@@ -40,9 +40,10 @@
       metafont
     ]
   ),
+  writeScript,
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "lilypond";
   version = "2.24.4";
   outputs = [
@@ -51,7 +52,7 @@ stdenv.mkDerivation rec {
   ];
 
   src = fetchzip {
-    url = "http://lilypond.org/download/sources/v${lib.versions.majorMinor version}/lilypond-${version}.tar.gz";
+    url = "http://lilypond.org/download/sources/v${lib.versions.majorMinor finalAttrs.version}/lilypond-${finalAttrs.version}.tar.gz";
     hash = "sha256-UYdORvodrVchxslOxpMiXrAh7DtB9sWp9yqZU/jeB9Y=";
   };
 
@@ -120,10 +121,12 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  passthru.updateScript = {
-    command = [ ./update.sh ];
-    supportedFeatures = [ "commit" ];
-  };
+  passthru.updateScript = writeScript "update-lilypond" ''
+    #!/usr/bin/env nix-shell
+    #!nix-shell -i bash -p common-updater-scripts curl
+    version="$(curl -s 'https://gitlab.com/lilypond/lilypond/-/raw/master/VERSION' | grep 'VERSION_STABLE=' | cut -d= -f2)"
+    update-source-version lilypond "$version"
+  '';
 
   # documentation makefile uses "out" for different purposes, hence we explicitly set it to an empty string
   makeFlags = [ "out=" ];
@@ -147,4 +150,4 @@ stdenv.mkDerivation rec {
   FONTCONFIG_FILE = lib.optional stdenv.hostPlatform.isDarwin (makeFontsConf {
     fontDirectories = [ freefont_ttf ];
   });
-}
+})

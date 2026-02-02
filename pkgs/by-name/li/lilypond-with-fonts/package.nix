@@ -14,7 +14,11 @@ lib.appendToName "with-fonts" (symlinkJoin {
     meta
     ;
 
-  paths = [ lilypond ] ++ openlilylib-fonts.all;
+  paths = [
+    lilypond
+  ]
+  # relevant for lilypond-unstable-with-fonts
+  ++ (openlilylib-fonts.override { inherit lilypond; }).all;
 
   nativeBuildInputs = [ makeWrapper ];
 
