@@ -8,15 +8,15 @@
   copyDesktopItems,
 }:
 
-stdenvNoCC.mkDerivation rec {
+stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "camunda-modeler";
   version = "5.43.1";
 
   src = fetchurl {
-    url = "https://github.com/camunda/camunda-modeler/releases/download/v${version}/camunda-modeler-${version}-linux-x64.tar.gz";
+    url = "https://github.com/camunda/camunda-modeler/releases/download/v${finalAttrs.version}/camunda-modeler-${finalAttrs.version}-linux-x64.tar.gz";
     hash = "sha256-ruYpMFL/7UK4AF7Zp4OhopClfUqEuWPIMA+cM3PJ9FI=";
   };
-  sourceRoot = "camunda-modeler-${version}-linux-x64";
+  sourceRoot = "camunda-modeler-${finalAttrs.version}-linux-x64";
 
   dontConfigure = true;
   dontBuild = true;
@@ -29,28 +29,28 @@ stdenvNoCC.mkDerivation rec {
   installPhase = ''
     runHook preInstall
 
-    mkdir -p $out/bin $out/share/${pname}
-    cp -a {locales,resources} $out/share/${pname}
-    install -Dm644 support/mime-types.xml $out/share/mime/packages/${pname}.xml
+    mkdir -p $out/bin $out/share/${finalAttrs.pname}
+    cp -a {locales,resources} $out/share/${finalAttrs.pname}
+    install -Dm644 support/mime-types.xml $out/share/mime/packages/${finalAttrs.pname}.xml
 
     for SIZE in 16 48 128; do
-      install -D -m0644 support/icon_''${SIZE}.png "$out/share/icons/hicolor/''${SIZE}x''${SIZE}/apps/${pname}.png"
+      install -D -m0644 support/icon_''${SIZE}.png "$out/share/icons/hicolor/''${SIZE}x''${SIZE}/apps/${finalAttrs.pname}.png"
     done
 
     runHook postInstall
   '';
 
   postFixup = ''
-    makeWrapper ${electron}/bin/electron $out/bin/${pname} \
-      --add-flags $out/share/${pname}/resources/app.asar
+    makeWrapper ${electron}/bin/electron $out/bin/${finalAttrs.pname} \
+      --add-flags $out/share/${finalAttrs.pname}/resources/app.asar
   '';
 
   desktopItems = [
     (makeDesktopItem {
-      name = pname;
-      exec = pname;
+      name = finalAttrs.pname;
+      exec = finalAttrs.pname;
       desktopName = "Camunda Modeler";
-      icon = pname;
+      icon = finalAttrs.pname;
       keywords = [
         "bpmn"
         "cmmn"
@@ -60,7 +60,7 @@ stdenvNoCC.mkDerivation rec {
         "camunda"
       ];
       genericName = "Process Modeling Tool";
-      comment = meta.description;
+      comment = finalAttrs.meta.description;
       mimeTypes = [
         "application/bpmn"
         "application/cmmn"
@@ -84,4 +84,4 @@ stdenvNoCC.mkDerivation rec {
     inherit (electron.meta) platforms;
     mainProgram = "camunda-modeler";
   };
-}
+})

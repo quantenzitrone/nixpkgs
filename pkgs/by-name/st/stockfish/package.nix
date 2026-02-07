@@ -45,14 +45,14 @@ let
   };
 in
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "stockfish";
   version = "18";
 
   src = fetchFromGitHub {
     owner = "official-stockfish";
     repo = "Stockfish";
-    tag = "sf_${version}";
+    tag = "sf_${finalAttrs.version}";
     hash = "sha256-J9E0fJeUemKh1mAPJ5PjZ3kmXqAc1Ec3dG5sfzvhuGo=";
   };
 
@@ -84,13 +84,13 @@ stdenv.mkDerivation rec {
         extraArgs = [ "--version-regex=^sf_([\\d.]+)$" ];
       })
       (lib.getExe (writeShellApplication {
-        name = "${pname}-nnue-updater";
+        name = "${finalAttrs.pname}-nnue-updater";
         runtimeInputs = [
           nix
           gnugrep
         ];
         runtimeEnv = {
-          PNAME = pname;
+          PNAME = finalAttrs.pname;
           PKG_FILE = toString ./package.nix;
           NNUE_BIG_FILE = nnueBigFile;
           NNUE_BIG_HASH = nnueBigHash;
@@ -125,4 +125,4 @@ stdenv.mkDerivation rec {
     license = lib.licenses.gpl3Only;
   };
 
-}
+})

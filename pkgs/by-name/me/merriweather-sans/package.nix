@@ -4,7 +4,7 @@
   fetchFromGitHub,
 }:
 
-stdenvNoCC.mkDerivation rec {
+stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "merriweather-sans";
   version = "1.008";
 
@@ -19,9 +19,9 @@ stdenvNoCC.mkDerivation rec {
   # Python dependencies to package (fontmake, gftools)
 
   installPhase = ''
-    install -m444 -Dt $out/share/fonts/truetype/${pname} fonts/ttfs/*.ttf
-    install -m444 -Dt $out/share/fonts/woff/${pname} fonts/woff/*.woff
-    install -m444 -Dt $out/share/fonts/woff2/${pname} fonts/woff2/*.woff2
+    install -m444 -Dt $out/share/fonts/truetype/${finalAttrs.pname} fonts/ttfs/*.ttf
+    install -m444 -Dt $out/share/fonts/woff/${finalAttrs.pname} fonts/woff/*.woff
+    install -m444 -Dt $out/share/fonts/woff2/${finalAttrs.pname} fonts/woff2/*.woff2
     # TODO: install variable version?
   '';
 
@@ -32,4 +32,4 @@ stdenvNoCC.mkDerivation rec {
     platforms = lib.platforms.all;
     maintainers = with lib.maintainers; [ emily ];
   };
-}
+})

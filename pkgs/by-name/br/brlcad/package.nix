@@ -11,14 +11,14 @@
   libgbm,
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "brlcad";
   version = "7.38.2";
 
   src = fetchFromGitHub {
     owner = "BRL-CAD";
     repo = "brlcad";
-    tag = "rel-${lib.replaceStrings [ "." ] [ "-" ] version}";
+    tag = "rel-${lib.replaceStrings [ "." ] [ "-" ] finalAttrs.version}";
     hash = "sha256-23UTeH4gY2x/QGYZ64glAkf6LmsXBAppIOHgoUdxgpo=";
   };
 
@@ -56,7 +56,7 @@ stdenv.mkDerivation rec {
   meta = {
     homepage = "https://brlcad.org";
     description = "BRL-CAD is a powerful cross-platform open source combinatorial solid modeling system";
-    changelog = "https://github.com/BRL-CAD/brlcad/releases/tag/${lib.removePrefix "refs/tags/" src.rev}";
+    changelog = "https://github.com/BRL-CAD/brlcad/releases/tag/${lib.removePrefix "refs/tags/" finalAttrs.src.rev}";
     license = with lib.licenses; [
       lgpl21
       bsd2
@@ -66,4 +66,4 @@ stdenv.mkDerivation rec {
     # error Exactly one of ON_LITTLE_ENDIAN or ON_BIG_ENDIAN should be defined.
     broken = stdenv.system == "aarch64-linux";
   };
-}
+})

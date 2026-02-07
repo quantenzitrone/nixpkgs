@@ -4,12 +4,12 @@
   fetchzip,
 }:
 
-stdenvNoCC.mkDerivation rec {
+stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "fantasque-sans-mono";
   version = "1.8.0";
 
   src = fetchzip {
-    url = "https://github.com/belluzj/fantasque-sans/releases/download/v${version}/FantasqueSansMono-Normal.zip";
+    url = "https://github.com/belluzj/fantasque-sans/releases/download/v${finalAttrs.version}/FantasqueSansMono-Normal.zip";
     stripRoot = false;
     hash = "sha256-MNXZoDPi24xXHXGVADH16a3vZmFhwX0Htz02+46hWFc=";
   };
@@ -18,7 +18,7 @@ stdenvNoCC.mkDerivation rec {
     runHook preInstall
 
     install -Dm644 OTF/*.otf -t $out/share/fonts/opentype
-    install -Dm644 README.md -t $out/share/doc/${pname}-${version}
+    install -Dm644 README.md -t $out/share/doc/${finalAttrs.pname}-${finalAttrs.version}
 
     runHook postInstall
   '';
@@ -30,4 +30,4 @@ stdenvNoCC.mkDerivation rec {
     platforms = lib.platforms.all;
     maintainers = [ lib.maintainers.rycee ];
   };
-}
+})

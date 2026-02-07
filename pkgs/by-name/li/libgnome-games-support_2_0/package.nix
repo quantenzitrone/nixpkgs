@@ -15,12 +15,12 @@
   ninja,
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "libgnome-games-support";
   version = "2.0.2";
 
   src = fetchurl {
-    url = "mirror://gnome/sources/${pname}/${lib.versions.majorMinor version}/${pname}-${version}.tar.xz";
+    url = "mirror://gnome/sources/${finalAttrs.pname}/${lib.versions.majorMinor finalAttrs.version}/${finalAttrs.pname}-${finalAttrs.version}.tar.xz";
     sha256 = "grvHTwj5i4M6m2REuEeeG9hN7QoHQl0Fe0XzjoeD5b0=";
   };
 
@@ -47,7 +47,7 @@ stdenv.mkDerivation rec {
   passthru = {
     updateScript = gnome.updateScript {
       packageName = "libgnome-games-support";
-      attrPath = "${pname}_2_0";
+      attrPath = "${finalAttrs.pname}_2_0";
       versionPolicy = "odd-unstable";
     };
   };
@@ -59,4 +59,4 @@ stdenv.mkDerivation rec {
     teams = [ lib.teams.gnome ];
     platforms = lib.platforms.unix;
   };
-}
+})

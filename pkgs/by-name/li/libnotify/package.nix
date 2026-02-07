@@ -18,7 +18,7 @@
   gobject-introspection,
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "libnotify";
   version = "0.8.7";
 
@@ -29,7 +29,7 @@ stdenv.mkDerivation rec {
   ];
 
   src = fetchurl {
-    url = "mirror://gnome/sources/libnotify/${lib.versions.majorMinor version}/libnotify-${version}.tar.xz";
+    url = "mirror://gnome/sources/libnotify/${lib.versions.majorMinor finalAttrs.version}/libnotify-${finalAttrs.version}.tar.xz";
     hash = "sha256-S+FSAuxBhPzhrBWZfs5VMNK+Mv6Vc4da6xDjtXOFh0g=";
   };
 
@@ -71,7 +71,7 @@ stdenv.mkDerivation rec {
 
   passthru = {
     updateScript = gnome.updateScript {
-      packageName = pname;
+      packageName = finalAttrs.pname;
       versionPolicy = "none";
     };
   };
@@ -84,4 +84,4 @@ stdenv.mkDerivation rec {
     mainProgram = "notify-send";
     platforms = lib.platforms.unix;
   };
-}
+})

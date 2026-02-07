@@ -13,12 +13,12 @@
   glib,
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "totem-pl-parser";
   version = "3.26.6";
 
   src = fetchurl {
-    url = "mirror://gnome/sources/totem-pl-parser/${lib.versions.majorMinor version}/totem-pl-parser-${version}.tar.xz";
+    url = "mirror://gnome/sources/totem-pl-parser/${lib.versions.majorMinor finalAttrs.version}/totem-pl-parser-${finalAttrs.version}.tar.xz";
     sha256 = "wN8PaNXPnX2kPIHH8T8RFYNYNo+Ywi1Hci870EvTrBw=";
   };
 
@@ -32,7 +32,7 @@ stdenv.mkDerivation rec {
 
   passthru = {
     updateScript = gnome.updateScript {
-      packageName = pname;
+      packageName = finalAttrs.pname;
       versionPolicy = "odd-unstable";
     };
   };
@@ -63,4 +63,4 @@ stdenv.mkDerivation rec {
     license = lib.licenses.lgpl2;
     platforms = lib.platforms.unix;
   };
-}
+})

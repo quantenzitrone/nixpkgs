@@ -6,14 +6,14 @@
   python3,
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "flatbuffers";
   version = "25.9.23";
 
   src = fetchFromGitHub {
     owner = "google";
     repo = "flatbuffers";
-    rev = "v${version}";
+    rev = "v${finalAttrs.version}";
     hash = "sha256-A9nWfgcuVW3x9MDFeviCUK/oGcWJQwadI8LqNR8BlQw=";
   };
 
@@ -23,7 +23,7 @@ stdenv.mkDerivation rec {
   ];
 
   cmakeFlags = [
-    "-DFLATBUFFERS_BUILD_TESTS=${if doCheck then "ON" else "OFF"}"
+    "-DFLATBUFFERS_BUILD_TESTS=${if finalAttrs.doCheck then "ON" else "OFF"}"
     "-DFLATBUFFERS_OSX_BUILD_UNIVERSAL=OFF"
   ];
 
@@ -44,4 +44,4 @@ stdenv.mkDerivation rec {
     mainProgram = "flatc";
     platforms = lib.platforms.unix;
   };
-}
+})

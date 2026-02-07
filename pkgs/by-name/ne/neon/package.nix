@@ -21,12 +21,12 @@ let
   inherit (lib) optionals;
 in
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   version = "0.36.0";
   pname = "neon";
 
   src = fetchurl {
-    url = "https://notroj.github.io/${pname}/${pname}-${version}.tar.gz";
+    url = "https://notroj.github.io/${finalAttrs.pname}/${finalAttrs.pname}-${finalAttrs.version}.tar.gz";
     sha256 = "sha256-cMx/Ku694mOQbhhbJm4E4N6Ss45fTszL9h6LeRd8Lwc=";
   };
 
@@ -59,8 +59,8 @@ stdenv.mkDerivation rec {
     description = "HTTP and WebDAV client library";
     mainProgram = "neon-config";
     homepage = "https://notroj.github.io/neon/";
-    changelog = "https://github.com/notroj/${pname}/blob/${version}/NEWS";
+    changelog = "https://github.com/notroj/${finalAttrs.pname}/blob/${finalAttrs.version}/NEWS";
     platforms = lib.platforms.unix;
     license = lib.licenses.lgpl2;
   };
-}
+})

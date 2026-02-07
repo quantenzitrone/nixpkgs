@@ -7,12 +7,12 @@
   static ? false,
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "runit";
   version = "2.2.0";
 
   src = fetchurl {
-    url = "http://smarden.org/runit/${pname}-${version}.tar.gz";
+    url = "http://smarden.org/runit/${finalAttrs.pname}-${finalAttrs.version}.tar.gz";
     sha256 = "sha256-le9NKGi5eMcXn+R5AeXFeOEc8nPSkr1iCL06fMsCkpA=";
   };
 
@@ -25,7 +25,7 @@ stdenv.mkDerivation rec {
     "man"
   ];
 
-  sourceRoot = "admin/${pname}-${version}";
+  sourceRoot = "admin/${finalAttrs.pname}-${finalAttrs.version}";
 
   doCheck = true;
 
@@ -67,4 +67,4 @@ stdenv.mkDerivation rec {
     maintainers = with lib.maintainers; [ joachifm ];
     platforms = lib.platforms.linux ++ lib.platforms.darwin;
   };
-}
+})

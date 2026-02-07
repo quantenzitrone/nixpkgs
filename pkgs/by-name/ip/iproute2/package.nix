@@ -16,12 +16,12 @@
   pkgsStatic,
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "iproute2";
   version = "6.18.0";
 
   src = fetchurl {
-    url = "mirror://kernel/linux/utils/net/${pname}/${pname}-${version}.tar.xz";
+    url = "mirror://kernel/linux/utils/net/${finalAttrs.pname}/${finalAttrs.pname}-${finalAttrs.version}.tar.xz";
     hash = "sha256-a6Ug4ZdeTFDckx7q6R6jfBmLihc3RIhfiJW4QyX51FY=";
   };
 
@@ -44,7 +44,7 @@ stdenv.mkDerivation rec {
   makeFlags = [
     "PREFIX=$(out)"
     "SBINDIR=$(out)/sbin"
-    "DOCDIR=$(TMPDIR)/share/doc/${pname}" # Don't install docs
+    "DOCDIR=$(TMPDIR)/share/doc/${finalAttrs.pname}" # Don't install docs
     "HDRDIR=$(dev)/include/iproute2"
   ]
   ++ lib.optionals stdenv.hostPlatform.isStatic [
@@ -105,4 +105,4 @@ stdenv.mkDerivation rec {
       fpletz
     ];
   };
-}
+})

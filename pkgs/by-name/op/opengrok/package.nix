@@ -6,13 +6,13 @@
   makeWrapper,
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "opengrok";
   version = "1.14.11";
 
   # binary distribution
   src = fetchurl {
-    url = "https://github.com/oracle/opengrok/releases/download/${version}/${pname}-${version}.tar.gz";
+    url = "https://github.com/oracle/opengrok/releases/download/${finalAttrs.version}/${finalAttrs.pname}-${finalAttrs.version}.tar.gz";
     hash = "sha256-05Aw44JmTHyy6JRWPk5+gv5BDN/W1ci0ddjPfvww0zI=";
   };
 
@@ -33,9 +33,9 @@ stdenv.mkDerivation rec {
     description = "Source code search and cross reference engine";
     mainProgram = "opengrok";
     homepage = "https://opengrok.github.io/OpenGrok/";
-    changelog = "https://github.com/oracle/opengrok/releases/tag/${version}";
+    changelog = "https://github.com/oracle/opengrok/releases/tag/${finalAttrs.version}";
     license = lib.licenses.cddl;
     maintainers = [ ];
     platforms = lib.platforms.all;
   };
-}
+})

@@ -5,12 +5,12 @@
   p7zip,
 }:
 
-stdenvNoCC.mkDerivation rec {
+stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "rounded-mgenplus";
   version = "20150602";
 
   src = fetchurl {
-    url = "https://osdn.jp/downloads/users/8/8598/${pname}-${version}.7z";
+    url = "https://osdn.jp/downloads/users/8/8598/${finalAttrs.pname}-${finalAttrs.version}.7z";
     hash = "sha256-7OpnZJc9k5NiOPHAbtJGMQvsMg9j81DCvbfo0f7uJcw=";
   };
 
@@ -21,7 +21,7 @@ stdenvNoCC.mkDerivation rec {
   installPhase = ''
     runHook preInstall
 
-    install -m 444 -D -t $out/share/fonts/${pname} ${pname}-*.ttf
+    install -m 444 -D -t $out/share/fonts/${finalAttrs.pname} ${finalAttrs.pname}-*.ttf
 
     runHook postInstall
   '';
@@ -33,4 +33,4 @@ stdenvNoCC.mkDerivation rec {
     platforms = lib.platforms.all;
     maintainers = with lib.maintainers; [ mnacamura ];
   };
-}
+})

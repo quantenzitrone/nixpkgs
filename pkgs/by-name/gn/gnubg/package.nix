@@ -11,12 +11,12 @@
   makeDesktopItem,
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "gnubg";
   version = "1.07.001";
 
   src = fetchurl {
-    url = "mirror://gnu/gnubg/gnubg-release-${version}-sources.tar.gz";
+    url = "mirror://gnu/gnubg/gnubg-release-${finalAttrs.version}-sources.tar.gz";
     hash = "sha256-cjmXKUGcrZ8RLDBmoS0AANpFCkVq3XsJTYkVUGnWgh4=";
   };
 
@@ -42,11 +42,11 @@ stdenv.mkDerivation rec {
   desktopItems = [
     (makeDesktopItem {
       desktopName = "GNU Backgammon";
-      name = pname;
+      name = finalAttrs.pname;
       genericName = "Backgammon";
-      comment = meta.description;
-      exec = pname;
-      icon = pname;
+      comment = finalAttrs.meta.description;
+      exec = finalAttrs.pname;
+      icon = finalAttrs.pname;
       categories = [
         "Game"
         "GTK"
@@ -61,4 +61,4 @@ stdenv.mkDerivation rec {
     license = lib.licenses.gpl3;
     platforms = lib.platforms.linux;
   };
-}
+})

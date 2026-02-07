@@ -8,12 +8,12 @@
   nixosTests,
 }:
 
-stdenvNoCC.mkDerivation rec {
+stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "komga";
   version = "1.24.1";
 
   src = fetchurl {
-    url = "https://github.com/gotson/${pname}/releases/download/${version}/${pname}-${version}.jar";
+    url = "https://github.com/gotson/${finalAttrs.pname}/releases/download/${finalAttrs.version}/${finalAttrs.pname}-${finalAttrs.version}.jar";
     sha256 = "sha256-rxhsE+rFF2zv1rzpNiKsayTUs6qc0F9C9sonEZ2BsiA=";
   };
 
@@ -42,4 +42,4 @@ stdenvNoCC.mkDerivation rec {
     mainProgram = "komga";
     sourceProvenance = with lib.sourceTypes; [ binaryBytecode ];
   };
-}
+})

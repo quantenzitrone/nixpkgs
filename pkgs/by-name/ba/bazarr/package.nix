@@ -15,12 +15,12 @@ let
     unar
   ];
 in
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "bazarr";
   version = "1.5.4";
 
   src = fetchzip {
-    url = "https://github.com/morpheus65535/bazarr/releases/download/v${version}/bazarr.zip";
+    url = "https://github.com/morpheus65535/bazarr/releases/download/v${finalAttrs.version}/bazarr.zip";
     hash = "sha256-NHfEhatHs03DdiyMwpZdJwi55NBHoaPXMmhkq+D1bqE=";
     stripRoot = false;
   };
@@ -44,15 +44,15 @@ stdenv.mkDerivation rec {
   installPhase = ''
     runHook preInstall
 
-    mkdir -p "$out"/{bin,share/${pname}}
-    cp -r * "$out/share/${pname}"
+    mkdir -p "$out"/{bin,share/${finalAttrs.pname}}
+    cp -r * "$out/share/${finalAttrs.pname}"
 
     # Add missing shebang and execute perms so that patchShebangs can do its
     # thing.
-    sed -i "1i #!/usr/bin/env python3" "$out/share/${pname}/bazarr.py"
-    chmod +x "$out/share/${pname}/bazarr.py"
+    sed -i "1i #!/usr/bin/env python3" "$out/share/${finalAttrs.pname}/bazarr.py"
+    chmod +x "$out/share/${finalAttrs.pname}/bazarr.py"
 
-    makeWrapper "$out/share/${pname}/bazarr.py" \
+    makeWrapper "$out/share/${finalAttrs.pname}/bazarr.py" \
         "$out/bin/bazarr" \
         --suffix PATH : ${lib.makeBinPath runtimeProgDeps}
 
@@ -71,4 +71,4 @@ stdenv.mkDerivation rec {
     mainProgram = "bazarr";
     platforms = lib.platforms.all;
   };
-}
+})

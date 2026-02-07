@@ -24,7 +24,7 @@
   pkg-config,
   pngquant,
 }:
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "appstream-glib";
   version = "0.8.2";
 
@@ -39,7 +39,9 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "hughsie";
     repo = "appstream-glib";
-    rev = "${lib.replaceStrings [ "-" ] [ "_" ] pname}_${lib.replaceStrings [ "." ] [ "_" ] version}";
+    rev = "${lib.replaceStrings [ "-" ] [ "_" ] finalAttrs.pname}_${
+      lib.replaceStrings [ "." ] [ "_" ] finalAttrs.version
+    }";
     sha256 = "sha256-3QFiOJ38talA0GGL++n+DaA/AN7l4LOZQ7BJV6o8ius=";
   };
 
@@ -98,4 +100,4 @@ stdenv.mkDerivation rec {
     platforms = lib.platforms.unix;
     maintainers = [ ];
   };
-}
+})

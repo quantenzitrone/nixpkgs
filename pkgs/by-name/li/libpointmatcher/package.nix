@@ -9,14 +9,14 @@
   yaml-cpp,
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "libpointmatcher";
   version = "1.4.4";
 
   src = fetchFromGitHub {
     owner = "norlab-ulaval";
     repo = "libpointmatcher";
-    rev = version;
+    rev = finalAttrs.version;
     hash = "sha256-OkfWdim0JDKiBx5spYpkMyFrLQP3AMWBVDpzmFwqNFM=";
   };
 
@@ -30,16 +30,16 @@ stdenv.mkDerivation rec {
 
   cmakeFlags = [
     (lib.cmakeFeature "EIGEN_INCLUDE_DIR" "${eigen}/include/eigen3")
-    (lib.cmakeBool "BUILD_TESTS" doCheck)
+    (lib.cmakeBool "BUILD_TESTS" finalAttrs.doCheck)
   ];
 
   doCheck = true;
 
   meta = {
-    inherit (src.meta) homepage;
+    inherit (finalAttrs.src.meta) homepage;
     description = "\"Iterative Closest Point\" library for 2-D/3-D mapping in robotic";
     license = lib.licenses.bsd3;
     platforms = lib.platforms.linux;
     maintainers = with lib.maintainers; [ cryptix ];
   };
-}
+})

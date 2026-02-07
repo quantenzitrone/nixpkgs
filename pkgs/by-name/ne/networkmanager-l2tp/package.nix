@@ -20,15 +20,15 @@
   nss,
 }:
 
-stdenv.mkDerivation rec {
-  name = "${pname}${lib.optionalString withGnome "-gnome"}-${version}";
+stdenv.mkDerivation (finalAttrs: {
+  name = "${finalAttrs.pname}${lib.optionalString withGnome "-gnome"}-${finalAttrs.version}";
   pname = "NetworkManager-l2tp";
   version = "1.20.22";
 
   src = fetchFromGitHub {
     owner = "nm-l2tp";
     repo = "network-manager-l2tp";
-    rev = version;
+    rev = finalAttrs.version;
     hash = "sha256-TuYLNjogR3psb1B9zonHzRQext0ROS4ueD2WcWkseJk=";
   };
 
@@ -84,4 +84,4 @@ stdenv.mkDerivation rec {
       obadz
     ];
   };
-}
+})

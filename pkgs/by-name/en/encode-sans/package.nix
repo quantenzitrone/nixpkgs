@@ -4,7 +4,7 @@
   fetchzip,
 }:
 
-stdenvNoCC.mkDerivation rec {
+stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "encode-sans";
   version = "1.002";
 
@@ -17,7 +17,7 @@ stdenvNoCC.mkDerivation rec {
     runHook preInstall
 
     install -Dm644 *.ttf                 -t $out/share/fonts/truetype
-    install -Dm644 README.md FONTLOG.txt -t $out/share/doc/${pname}-${version}
+    install -Dm644 README.md FONTLOG.txt -t $out/share/doc/${finalAttrs.pname}-${finalAttrs.version}
 
     runHook postInstall
   '';
@@ -37,4 +37,4 @@ stdenvNoCC.mkDerivation rec {
     maintainers = [ ];
     platforms = lib.platforms.all;
   };
-}
+})

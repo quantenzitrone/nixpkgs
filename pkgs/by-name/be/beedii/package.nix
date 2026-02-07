@@ -5,12 +5,12 @@
   gitUpdater,
 }:
 
-stdenvNoCC.mkDerivation rec {
+stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "beedii";
   version = "1.0.0";
 
   src = fetchzip {
-    url = "https://github.com/webkul/beedii/releases/download/v${version}/beedii.zip";
+    url = "https://github.com/webkul/beedii/releases/download/v${finalAttrs.version}/beedii.zip";
     hash = "sha256-MefkmWl7LdhQiePpixKcatoIeOTlrRaO3QA9xWAxJ4Q=";
     stripRoot = false;
   };
@@ -18,7 +18,7 @@ stdenvNoCC.mkDerivation rec {
   installPhase = ''
     runHook preInstall
 
-    install -Dm444 Fonts/*.ttf -t $out/share/fonts/truetype/${pname}
+    install -Dm444 Fonts/*.ttf -t $out/share/fonts/truetype/${finalAttrs.pname}
 
     runHook postInstall
   '';
@@ -41,4 +41,4 @@ stdenvNoCC.mkDerivation rec {
       kachick
     ];
   };
-}
+})

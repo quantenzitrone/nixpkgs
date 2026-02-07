@@ -6,12 +6,12 @@
   jre,
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "flink";
   version = "2.2.0";
 
   src = fetchurl {
-    url = "mirror://apache/flink/${pname}-${version}/${pname}-${version}-bin-scala_2.12.tgz";
+    url = "mirror://apache/flink/${finalAttrs.pname}-${finalAttrs.version}/${finalAttrs.pname}-${finalAttrs.version}-bin-scala_2.12.tgz";
     sha256 = "sha256-tmx9xuGVNyCd3DlDDWvn54XUjcB41rLSaapgFQlbSF8=";
   };
 
@@ -46,4 +46,4 @@ stdenv.mkDerivation rec {
       autophagy
     ];
   };
-}
+})

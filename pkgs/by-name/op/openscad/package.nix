@@ -34,14 +34,14 @@
   runCommand,
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "openscad";
   version = "2021.01";
 
   src = fetchFromGitHub {
     owner = "openscad";
     repo = "openscad";
-    rev = "${pname}-${version}";
+    rev = "${finalAttrs.pname}-${finalAttrs.version}";
     sha256 = "sha256-2tOLqpFt5klFPxHNONnHVzBKEFWn4+ufx/MU+eYbliA=";
   };
 
@@ -149,7 +149,7 @@ stdenv.mkDerivation rec {
   ++ lib.optional spacenavSupport libspnav;
 
   qmakeFlags = [
-    "VERSION=${version}"
+    "VERSION=${finalAttrs.version}"
     "LIB3MF_INCLUDEPATH=${lib3mf.dev}/include/lib3mf/Bindings/Cpp"
     "LIB3MF_LIBPATH=${lib3mf}/lib"
   ]
@@ -201,7 +201,7 @@ stdenv.mkDerivation rec {
 
   passthru.tests = {
     lib3mf_support =
-      runCommand "${pname}-lib3mf-support-test"
+      runCommand "${finalAttrs.pname}-lib3mf-support-test"
         {
           nativeBuildInputs = [ openscad ];
         }
@@ -211,4 +211,4 @@ stdenv.mkDerivation rec {
           mv cube-import.3mf $out
         '';
   };
-}
+})

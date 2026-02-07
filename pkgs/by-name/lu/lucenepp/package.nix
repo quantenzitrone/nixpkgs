@@ -9,14 +9,14 @@
   zlib,
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "lucene++";
   version = "3.0.9";
 
   src = fetchFromGitHub {
     owner = "luceneplusplus";
     repo = "LucenePlusPlus";
-    rev = "rel_${version}";
+    rev = "rel_${finalAttrs.version}";
     hash = "sha256-VxEV45OXHRldFdIt2OC6O7ey5u98VQzlzeOb9ZiKfd8=";
   };
 
@@ -29,7 +29,7 @@ stdenv.mkDerivation rec {
 
   cmakeFlags = [
     (lib.cmakeFeature "CMAKE_INSTALL_LIBDIR" "lib")
-    (lib.cmakeBool "ENABLE_TEST" doCheck)
+    (lib.cmakeBool "ENABLE_TEST" finalAttrs.doCheck)
   ];
 
   patches = [
@@ -83,4 +83,4 @@ stdenv.mkDerivation rec {
     platforms = lib.platforms.unix;
     maintainers = with lib.maintainers; [ wineee ];
   };
-}
+})

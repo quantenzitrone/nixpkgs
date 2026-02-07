@@ -12,14 +12,14 @@
   nix-update-script,
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "unfs3";
   version = "0.10.0";
 
   src = fetchFromGitHub {
     owner = "unfs3";
     repo = "unfs3";
-    tag = "unfs3-${version}";
+    tag = "unfs3-${finalAttrs.version}";
     hash = "sha256-5iAriIutBhwyZVS7AG2fnkrHOI7pNAKfYv062Cy0WXw=";
   };
 
@@ -55,7 +55,7 @@ stdenv.mkDerivation rec {
     updateScript = nix-update-script {
       extraArgs = [
         "--version-regex"
-        "${pname}-(.*)"
+        "${finalAttrs.pname}-(.*)"
       ];
     };
   };
@@ -75,11 +75,11 @@ stdenv.mkDerivation rec {
     # whoever controls the old URL approves of the "unfs3" github
     # account.
     homepage = "https://unfs3.github.io/";
-    changelog = "https://raw.githubusercontent.com/unfs3/unfs3/unfs3-${version}/NEWS";
+    changelog = "https://raw.githubusercontent.com/unfs3/unfs3/unfs3-${finalAttrs.version}/NEWS";
     mainProgram = "unfsd";
 
     license = lib.licenses.bsd3;
     platforms = lib.platforms.unix;
     maintainers = [ ];
   };
-}
+})

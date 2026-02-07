@@ -37,12 +37,12 @@
   check,
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "rhythmbox";
   version = "3.4.9";
 
   src = fetchurl {
-    url = "mirror://gnome/sources/rhythmbox/${lib.versions.majorMinor version}/rhythmbox-${version}.tar.xz";
+    url = "mirror://gnome/sources/rhythmbox/${lib.versions.majorMinor finalAttrs.version}/rhythmbox-${finalAttrs.version}.tar.xz";
     sha256 = "5CKRoY33oh/+azUr9z8F1+KYu04FvOWWf5jujO5ECPE=";
   };
 
@@ -117,7 +117,7 @@ stdenv.mkDerivation rec {
 
   passthru = {
     updateScript = gnome.updateScript {
-      packageName = pname;
+      packageName = finalAttrs.pname;
       versionPolicy = "none";
     };
   };
@@ -129,4 +129,4 @@ stdenv.mkDerivation rec {
     platforms = lib.platforms.linux;
     maintainers = [ ];
   };
-}
+})

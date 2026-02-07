@@ -10,14 +10,14 @@
   withPlugins ? false,
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "audacious";
   version = "4.5.1";
 
   src = fetchFromGitHub {
     owner = "audacious-media-player";
     repo = "audacious";
-    rev = "${pname}-${version}";
+    rev = "${finalAttrs.pname}-${finalAttrs.version}";
     hash = "sha256-1+RyGMUrotFdNCNpxzKpXGafKn9kNtzEyRVefUmJexU=";
   };
 
@@ -63,4 +63,4 @@ stdenv.mkDerivation rec {
       lgpl2Plus # http://redmine.audacious-media-player.org/issues/46
     ];
   };
-}
+})

@@ -26,15 +26,15 @@
   headless ? false,
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "boinc";
   version = "8.2.8";
 
   src = fetchFromGitHub {
-    name = "${pname}-${version}-src";
+    name = "${finalAttrs.pname}-${finalAttrs.version}-src";
     owner = "BOINC";
     repo = "boinc";
-    rev = "client_release/${lib.versions.majorMinor version}/${version}";
+    rev = "client_release/${lib.versions.majorMinor finalAttrs.version}/${finalAttrs.version}";
     hash = "sha256-yCsqkC6kle2oE29KP5qILe0F+5AOpFl2S3s2c09x7N4=";
   };
 
@@ -94,4 +94,4 @@ stdenv.mkDerivation rec {
     platforms = lib.platforms.linux;
     maintainers = with lib.maintainers; [ Luflosi ];
   };
-}
+})

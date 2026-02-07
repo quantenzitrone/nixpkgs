@@ -12,12 +12,12 @@
   libxml2,
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "lttng-tools";
   version = "2.14.1";
 
   src = fetchurl {
-    url = "https://lttng.org/files/lttng-tools/${pname}-${version}.tar.bz2";
+    url = "https://lttng.org/files/lttng-tools/${finalAttrs.pname}-${finalAttrs.version}.tar.bz2";
     sha256 = "sha256-DmjrJ5I2IcS8Enz85AQi0oz35HP+32IprmwyulxbfG0=";
   };
 
@@ -46,4 +46,4 @@ stdenv.mkDerivation rec {
     maintainers = [ lib.maintainers.bjornfor ];
   };
 
-}
+})

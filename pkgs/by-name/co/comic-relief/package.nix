@@ -4,7 +4,7 @@
   fetchzip,
 }:
 
-stdenvNoCC.mkDerivation rec {
+stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "comic-relief";
   version = "1.1";
 
@@ -18,11 +18,11 @@ stdenvNoCC.mkDerivation rec {
     runHook preInstall
 
     mkdir -p $out/etc/fonts/conf.d
-    mkdir -p $out/share/doc/${pname}-${version}
+    mkdir -p $out/share/doc/${finalAttrs.pname}-${finalAttrs.version}
     mkdir -p $out/share/fonts/truetype
     cp -v ${./comic-sans-ms-alias.conf}     $out/etc/fonts/conf.d/30-comic-sans-ms.conf
     cp *.ttf      -d $out/share/fonts/truetype
-    cp FONTLOG.txt -d $out/share/doc/${pname}-${version}
+    cp FONTLOG.txt -d $out/share/doc/${finalAttrs.pname}-${finalAttrs.version}
 
     runHook postInstall
   '';
@@ -46,4 +46,4 @@ stdenvNoCC.mkDerivation rec {
     # want to install the font alias of this package.
     priority = 10;
   };
-}
+})

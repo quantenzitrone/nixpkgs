@@ -15,14 +15,14 @@
   llvmPackages,
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "cryfs";
   version = "1.0.3";
 
   src = fetchFromGitHub {
     owner = "cryfs";
     repo = "cryfs";
-    rev = version;
+    rev = finalAttrs.version;
     hash = "sha256-bBe//AjA9QmdSDlb0xiOboE5F4g6LJ03cHQZpfOk+Y4=";
   };
 
@@ -69,7 +69,7 @@ stdenv.mkDerivation rec {
     "-DDEPENDENCY_CONFIG='../cmake-utils/DependenciesFromLocalSystem.cmake'"
     "-DCRYFS_UPDATE_CHECKS:BOOL=FALSE"
     "-DBoost_USE_STATIC_LIBS:BOOL=FALSE" # this option is case sensitive
-    "-DBUILD_TESTING:BOOL=${if doCheck then "TRUE" else "FALSE"}"
+    "-DBUILD_TESTING:BOOL=${if finalAttrs.doCheck then "TRUE" else "FALSE"}"
   ];
 
   # macFUSE needs to be installed for the test to succeed on Darwin
@@ -92,7 +92,7 @@ stdenv.mkDerivation rec {
   meta = {
     description = "Cryptographic filesystem for the cloud";
     homepage = "https://www.cryfs.org/";
-    changelog = "https://github.com/cryfs/cryfs/raw/${version}/ChangeLog.txt";
+    changelog = "https://github.com/cryfs/cryfs/raw/${finalAttrs.version}/ChangeLog.txt";
     license = lib.licenses.lgpl3Only;
     maintainers = with lib.maintainers; [
       peterhoeg
@@ -101,4 +101,4 @@ stdenv.mkDerivation rec {
     ];
     platforms = lib.platforms.unix;
   };
-}
+})

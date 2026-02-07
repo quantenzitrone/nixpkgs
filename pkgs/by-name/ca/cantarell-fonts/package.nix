@@ -10,12 +10,12 @@
   gnome,
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "cantarell-fonts";
   version = "0.303.1";
 
   src = fetchurl {
-    url = "mirror://gnome/sources/cantarell-fonts/${lib.versions.majorMinor version}/cantarell-fonts-${version}.tar.xz";
+    url = "mirror://gnome/sources/cantarell-fonts/${lib.versions.majorMinor finalAttrs.version}/cantarell-fonts-${finalAttrs.version}.tar.xz";
     sha256 = "+UY6BlnGPlfjgf3XU88ZKSJTlcW0kTWYlCR2GDBTBBE=";
   };
 
@@ -45,7 +45,7 @@ stdenv.mkDerivation rec {
 
   passthru = {
     updateScript = gnome.updateScript {
-      packageName = pname;
+      packageName = finalAttrs.pname;
     };
   };
 
@@ -55,4 +55,4 @@ stdenv.mkDerivation rec {
     license = lib.licenses.ofl;
     maintainers = [ ];
   };
-}
+})

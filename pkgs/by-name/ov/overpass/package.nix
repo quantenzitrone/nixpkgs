@@ -4,12 +4,12 @@
   fetchzip,
 }:
 
-stdenvNoCC.mkDerivation rec {
+stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "overpass";
   version = "3.0.5";
 
   src = fetchzip {
-    url = "https://github.com/RedHatOfficial/Overpass/releases/download/v${version}/overpass-${version}.zip";
+    url = "https://github.com/RedHatOfficial/Overpass/releases/download/v${finalAttrs.version}/overpass-${finalAttrs.version}.zip";
     hash = "sha256-8AWT0/DELfNWXtZOejC90DbUSOtyGt9tSkcSuO7HP2o=";
   };
 
@@ -18,7 +18,7 @@ stdenvNoCC.mkDerivation rec {
 
     install -Dm644 */*/*.otf -t $out/share/fonts/opentype
     install -Dm644 */*/*.ttf -t $out/share/fonts/truetype
-    install -Dm644 *.md  -t $out/share/doc/${pname}-${version}
+    install -Dm644 *.md  -t $out/share/doc/${finalAttrs.pname}-${finalAttrs.version}
 
     runHook postInstall
   '';
@@ -30,4 +30,4 @@ stdenvNoCC.mkDerivation rec {
     platforms = lib.platforms.all;
     maintainers = [ lib.maintainers.rycee ];
   };
-}
+})

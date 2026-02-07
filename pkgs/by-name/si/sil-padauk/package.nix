@@ -4,12 +4,12 @@
   fetchzip,
 }:
 
-stdenvNoCC.mkDerivation rec {
+stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "sil-padauk";
   version = "5.100";
 
   src = fetchzip {
-    url = "https://software.sil.org/downloads/r/padauk/Padauk-${version}.zip";
+    url = "https://software.sil.org/downloads/r/padauk/Padauk-${finalAttrs.version}.zip";
     hash = "sha256-Y4ZcxbPcgF349wDuT352xqaJji+FMfBH6P7WSWOw2iI=";
   };
 
@@ -18,8 +18,8 @@ stdenvNoCC.mkDerivation rec {
 
     mkdir -p $out/share/fonts/truetype
     mv *.ttf $out/share/fonts/truetype/
-    mkdir -p $out/share/doc/${pname}-${version}
-    mv *.txt documentation/ $out/share/doc/${pname}-${version}/
+    mkdir -p $out/share/doc/${finalAttrs.pname}-${finalAttrs.version}
+    mv *.txt documentation/ $out/share/doc/${finalAttrs.pname}-${finalAttrs.version}/
 
     runHook postInstall
   '';
@@ -31,4 +31,4 @@ stdenvNoCC.mkDerivation rec {
     maintainers = with lib.maintainers; [ serge ];
     platforms = lib.platforms.all;
   };
-}
+})

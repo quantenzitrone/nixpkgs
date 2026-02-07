@@ -4,21 +4,21 @@
   fetchzip,
 }:
 
-stdenvNoCC.mkDerivation rec {
+stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "alkalami";
   version = "3.000";
 
   src = fetchzip {
-    url = "https://software.sil.org/downloads/r/alkalami/Alkalami-${version}.zip";
+    url = "https://software.sil.org/downloads/r/alkalami/Alkalami-${finalAttrs.version}.zip";
     hash = "sha256-ra664VbUKc8XpULCWhLMVnc1mW4pqZvbvwuBvRQRhcY=";
   };
 
   installPhase = ''
     runHook preInstall
 
-    mkdir -p $out/share/{doc/${pname},fonts/truetype}
+    mkdir -p $out/share/{doc/${finalAttrs.pname},fonts/truetype}
     mv *.ttf $out/share/fonts/truetype/
-    mv *.txt documentation $out/share/doc/${pname}/
+    mv *.txt documentation $out/share/doc/${finalAttrs.pname}/
 
     runHook postInstall
   '';
@@ -30,4 +30,4 @@ stdenvNoCC.mkDerivation rec {
     maintainers = [ lib.maintainers.vbgl ];
     platforms = lib.platforms.all;
   };
-}
+})
