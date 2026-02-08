@@ -493,6 +493,15 @@ mapAliases {
   collada2gltf = throw "collada2gltf has been removed from Nixpkgs, as it has been unmaintained upstream for 5 years and does not build with supported GCC versions"; # Addd 2025-08-08
   colloid-kde = throw "'colloid-kde' has been removed, as it is only compatible with Plasma 5, which is EOL"; # Added 2025-08-20
   colorstorm = throw "'colorstorm' has been removed because it was unmaintained in nixpkgs and upstream was rewritten."; # Added 2025-06-15
+  commonsBcel = commons-bcel; # Added 2026-02-08
+  commonsBsf = commons-bsf; # Added 2026-02-08
+  commonsCompress = commons-compress; # Added 2026-02-08
+  commonsDaemon = commons-daemon; # Added 2026-02-08
+  commonsFileUpload = commons-fileupload; # Added 2026-02-08
+  commonsIo = commons-io; # Added 2026-02-08
+  commonsLang = commons-lang; # Added 2026-02-08
+  commonsLogging = commons-logging; # Added 2026-02-08
+  commonsMath = commons-math; # Added 2026-02-08
   computecpp = throw "'computecpp' has been removed because its source has been pulled"; # Added 2025-12-20
   computecpp-unwrapped = throw "'computecpp-unwrapped' has been removed because its source has been pulled"; # Added 2025-12-20
   conduwuit = throw "'conduwuit' has been removed as the upstream repository has been deleted. Consider migrating to 'matrix-conduit', 'matrix-continuwuity' or 'matrix-tuwunel' instead."; # Added 2025-08-08
