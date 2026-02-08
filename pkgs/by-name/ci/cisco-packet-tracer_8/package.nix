@@ -59,7 +59,7 @@ let
   };
 
   unwrapped = stdenvNoCC.mkDerivation {
-    name = "ciscoPacketTracer8-unwrapped";
+    name = "cisco-packet-tracer-unwrapped";
     inherit version;
 
     src =
@@ -135,14 +135,14 @@ let
   };
 
   fhs-env = buildFHSEnv {
-    name = "ciscoPacketTracer8-fhs-env";
+    name = "cisco-packet-tracer-fhs-env";
     runScript = lib.getExe' unwrapped "packettracer8";
     targetPkgs = _: [ libudev0-shim ];
   };
 in
 
 stdenvNoCC.mkDerivation {
-  pname = "ciscoPacketTracer8";
+  pname = "cisco-packet-tracer";
   inherit version;
 
   dontUnpack = true;
