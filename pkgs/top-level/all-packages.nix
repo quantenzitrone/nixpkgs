@@ -9670,7 +9670,7 @@ with pkgs;
 
   cbconvert-gui = cbconvert.gui;
 
-  cdparanoia = cdparanoiaIII;
+  cdparanoia = cdparanoia-iii;
 
   cdxj-indexer = with python3Packages; toPythonApplication cdxj-indexer;
 
