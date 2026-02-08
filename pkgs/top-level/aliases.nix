@@ -907,6 +907,7 @@ mapAliases {
   infamousPlugins = infamousplugins; # Added 2026-02-08
   inotifyTools = throw "'inotifyTools' has been renamed to/replaced by 'inotify-tools'"; # Converted to throw 2025-10-27
   insync-emblem-icons = throw "'insync-emblem-icons' has been removed, use 'insync-nautilus' instead"; # Added 2025-05-14
+  intel2200BGFirmware = ipw2200-firmware; # Added 2026-02-08
   invalidateFetcherByDrvHash = throw "'invalidateFetcherByDrvHash' has been renamed to/replaced by 'testers.invalidateFetcherByDrvHash'"; # Converted to throw 2025-10-27
   ioccheck = throw "ioccheck was dropped since it was unmaintained."; # Added 2025-07-06
   ipfs = throw "'ipfs' has been renamed to/replaced by 'kubo'"; # Converted to throw 2025-10-27
