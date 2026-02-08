@@ -1441,6 +1441,7 @@ mapAliases {
   NSPlist = throw "'NSPlist' has been renamed to/replaced by 'nsplist'"; # Converted to throw 2025-10-27
   nuget-to-nix = throw "nuget-to-nix has been removed as it was deprecated in favor of nuget-to-json. Please use nuget-to-json instead"; # Added 2025-08-28
   nushellFull = throw "'nushellFull' has been renamed to/replaced by 'nushell'"; # Converted to throw 2025-10-27
+  nuXmv = nuxmv; # Added 2026-02-08
   o = throw "'o' has been renamed to/replaced by 'orbiton'"; # Converted to throw 2025-10-27
   oam-tools = throw "'oam-tools' has been become part of amass"; # Added 2025-12-21
   oathToolkit = throw "'oathToolkit' has been renamed to/replaced by 'oath-toolkit'"; # Converted to throw 2025-10-27
