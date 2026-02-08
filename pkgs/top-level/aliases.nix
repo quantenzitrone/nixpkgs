@@ -888,6 +888,7 @@ mapAliases {
   hspellDicts = throw "'hspellDicts' has been removed due to being broken for more than a year; see RFC 180"; # Added 2026-02-05
   http-prompt = throw "'http-prompt' has been removed as it was broken and unmaintained upstream"; # Added 2025-11-26
   hydra_unstable = throw "'hydra_unstable' has been renamed to/replaced by 'hydra'"; # Converted to throw 2025-10-27
+  hydraAntLogger = hydra-ant-logger; # Added 2026-02-08
   i3-gaps = throw "'i3-gaps' has been renamed to/replaced by 'i3'"; # Converted to throw 2025-10-27
   i3lock-pixeled = throw "'i3lock-pixeled' has been unmaintained for several years now."; # Converted to throw 2026-01-24
   ibm-sw-tpm2 = throw "ibm-sw-tpm2 has been removed, as it was broken"; # Added 2025-08-25
