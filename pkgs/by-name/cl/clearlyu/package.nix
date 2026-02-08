@@ -8,7 +8,7 @@
 }:
 
 stdenv.mkDerivation (finalAttrs: {
-  pname = "clearlyU";
+  pname = "clearlyu";
   version = "12-1.9";
 
   src = fetchurl {
