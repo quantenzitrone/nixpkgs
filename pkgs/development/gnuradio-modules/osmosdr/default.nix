@@ -18,7 +18,7 @@
   icu,
   airspy,
   hackrf,
-  libbladeRF,
+  libbladerf,
   rtl-sdr,
   soapysdr-with-plugins,
   gnuradioAtLeast,
@@ -50,7 +50,7 @@ mkDerivation rec {
     icu
     airspy
     hackrf
-    libbladeRF
+    libbladerf
     rtl-sdr
     soapysdr-with-plugins
   ]

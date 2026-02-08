@@ -337185,7 +337185,7 @@ self: {
       bindings-DSL,
       bytestring,
       hlint,
-      libbladeRF,
+      libbladerf,
     }:
     mkDerivation {
       pname = "hlibBladeRF";
@@ -337196,7 +337196,7 @@ self: {
         bindings-DSL
         bytestring
       ];
-      libraryPkgconfigDepends = [ libbladeRF ];
+      libraryPkgconfigDepends = [ libbladerf ];
       testHaskellDepends = [
         base
         hlint
@@ -337206,7 +337206,7 @@ self: {
       hydraPlatforms = lib.platforms.none;
       broken = true;
     }
-  ) { inherit (pkgs) libbladeRF; };
+  ) { inherit (pkgs) libbladerf; };
 
   hlibcpuid = callPackage (
     { mkDerivation, base }:
