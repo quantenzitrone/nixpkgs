@@ -276280,7 +276280,7 @@ self: {
           vector-algorithms,
           wai,
           warp,
-          xxHash,
+          xxhash,
           yaml,
         }:
         mkDerivation {
@@ -276378,7 +276378,7 @@ self: {
             libfolly
             libunwind
             rocksdb
-            xxHash
+            xxhash
           ];
           libraryToolDepends = [
             alex
@@ -276522,7 +276522,7 @@ self: {
         libfolly = null;
         inherit (pkgs) libunwind;
         inherit (pkgs) rocksdb;
-        inherit (pkgs) xxHash;
+        inherit (pkgs) xxhash;
       };
 
   glfw-group = callPackage (
@@ -753494,7 +753494,7 @@ self: {
       tasty-bench,
       tasty-quickcheck,
       text,
-      xxHash,
+      xxhash,
     }:
     mkDerivation {
       pname = "xxhash-ffi";
@@ -753506,7 +753506,7 @@ self: {
         hashable
         text
       ];
-      libraryPkgconfigDepends = [ xxHash ];
+      libraryPkgconfigDepends = [ xxhash ];
       testHaskellDepends = [
         base
         bytestring
@@ -753526,7 +753526,7 @@ self: {
       description = "Bindings and high-level helpers for xxHash";
       license = lib.licensesSpdx."BSD-3-Clause";
     }
-  ) { inherit (pkgs) xxHash; };
+  ) { inherit (pkgs) xxhash; };
 
   xz = callPackage (
     {

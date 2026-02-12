@@ -21,7 +21,7 @@
   dejagnu,
   source-highlight,
   libiconv,
-  xxHash,
+  xxhash,
 
   withTui ? true,
   ncurses,
@@ -107,7 +107,7 @@ stdenv.mkDerivation (finalAttrs: {
     zstd
     xz
     source-highlight
-    xxHash
+    xxhash
     dejagnu # for tests
   ]
   ++ optional withTui ncurses

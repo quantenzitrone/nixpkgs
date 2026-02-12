@@ -55,7 +55,7 @@
   xorgproto,
   libxkbfile,
   xorg-server,
-  xxHash,
+  xxhash,
   clang,
   withHtml ? true,
   xpra-html5,
@@ -180,7 +180,7 @@ effectiveBuildPythonApplication rec {
     libavif
     openh264
     libyuv
-    xxHash
+    xxhash
     systemd
   ]
   ++ lib.optional withNvenc [
