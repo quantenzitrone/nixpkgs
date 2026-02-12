@@ -6,7 +6,7 @@
   pkg-config,
   dbus,
   simplebluez,
-  simpleDBus,
+  simpledbus,
 }:
 stdenv.mkDerivation (finalAttrs: {
   pname = "zmkBATx";
@@ -31,7 +31,7 @@ stdenv.mkDerivation (finalAttrs: {
     qt6.qtconnectivity
     dbus.lib
     simplebluez
-    simpleDBus
+    simpledbus
   ];
 
   postPatch = ''
