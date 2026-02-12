@@ -339877,7 +339877,7 @@ self: {
       mkDerivation,
       base,
       hmatrix,
-      QuadProgpp,
+      quadprogpp,
       vector,
     }:
     mkDerivation {
@@ -339889,11 +339889,11 @@ self: {
         hmatrix
         vector
       ];
-      librarySystemDepends = [ QuadProgpp ];
+      librarySystemDepends = [ quadprogpp ];
       description = "Bindings to the QuadProg++ quadratic programming library";
       license = lib.licenses.bsd3;
     }
-  ) { inherit (pkgs) QuadProgpp; };
+  ) { inherit (pkgs) quadprogpp; };
 
   hmatrix-repa = callPackage (
     {
