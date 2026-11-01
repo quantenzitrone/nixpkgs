@@ -1354,6 +1354,7 @@ mapAliases {
   keepkey-agent = throw "keepkey-agent has been removed because upstream dropped KeepKey support"; # Added 2026-03-11
   keepkey_agent = throw "keepkey-agent has been removed because upstream dropped KeepKey support"; # Added 2026-03-11
   keeweb = throw "'keeweb' has been removed because it was using an EOL electron version"; # Added 2026-09-17
+  kega-fusion = throw "'kega-fusion' has been removed, as it is unmaintained and depends on GTK 2. Consider using `mednafen` instead."; # Added 2026-11-01
   keydb = throw "'keydb' has been removed as it was broken, vulnerable, and unmaintained upstream"; # Added 2025-11-08
   kgraphviewer = throw "'kgraphviewer' has been removed due to outdated KF5 dependencies."; # Added 2026-05-01
   kgx = throw "'kgx' has been renamed to/replaced by 'gnome-console'"; # Converted to throw 2025-10-27
