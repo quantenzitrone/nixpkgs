@@ -23049,7 +23049,7 @@ self: super: with self; {
 
   xmpppy = callPackage ../development/python-modules/xmpppy { };
 
-  xnatpy = callPackage ../development/python-modules/xnatpy { };
+  xnat = callPackage ../development/python-modules/xnat { };
 
   xnd = callPackage ../development/python-modules/xnd { };
 
