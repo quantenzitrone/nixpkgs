@@ -32,6 +32,8 @@ stdenv.mkDerivation (finalAttrs: {
     zopfli
   ];
 
+  strictDeps = true;
+
   buildFlags = [
     "LIBS=-lzopfli -lstdc++ -lpng -lz"
   ];
