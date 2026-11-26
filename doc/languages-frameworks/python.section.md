@@ -40,7 +40,7 @@ applications elsewhere. In case a package is used as both a library and an
 application, then the package should be in `pkgs/top-level/python-packages.nix`
 since only those packages are made available for all interpreter versions. The
 preferred location for library expressions is in
-`pkgs/development/python-modules`. It is important that these packages are
+`pkgs/sets/python3Packages/non-by-name`. It is important that these packages are
 called from `pkgs/top-level/python-packages.nix` and not elsewhere, to guarantee
 the right version of the package is built.
 
@@ -2235,7 +2235,7 @@ The following rules are desired to be respected:
 
 * Python libraries are called from `python-packages.nix` and packaged with
   [`buildPythonPackage`](#buildpythonpackage-function). The expression of a library should be in
-  `pkgs/development/python-modules/<name>/default.nix`.
+  `pkgs/sets/python3Packages/non-by-name/<name>/default.nix`.
 * Python applications live outside of `python-packages.nix` and are packaged
   with [`buildPythonApplication`](#buildpythonapplication-function).
 * Make sure libraries build for all Python interpreters.
@@ -2306,7 +2306,7 @@ An exemplary call to update all python libraries between minor versions
 would be:
 
 ```ShellSession
-$ maintainers/scripts/update-python-libraries --target minor --commit --use-pkgs-prefix pkgs/development/python-modules/**/default.nix
+$ maintainers/scripts/update-python-libraries --target minor --commit --use-pkgs-prefix pkgs/sets/python3Packages/non-by-name/**/default.nix
 ```
 
 ## CPython Update Schedule {#python-cpython-update-schedule}

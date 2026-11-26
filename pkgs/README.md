@@ -891,7 +891,7 @@ Here are examples of package tests:
 
 - [Jasmin compile test](by-name/ja/jasmin/test-assemble-hello-world/default.nix)
 - [Lobster compile test](by-name/lo/lobster/test-can-run-hello-world.nix)
-- [Spacy annotation test](development/python-modules/spacy/annotation-test/default.nix)
+- [Spacy annotation test](sets/python3Packages/non-by-name/spacy/annotation-test/default.nix)
 - [Libtorch test](development/libraries/science/math/libtorch/test/default.nix)
 - [Multiple tests for nanopb](./by-name/na/nanopb/package.nix)
 

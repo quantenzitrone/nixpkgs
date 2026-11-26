@@ -78,7 +78,7 @@ let
             hooks = import ./hooks/default.nix;
             keep = self: hooks self { };
             optionalExtensions = cond: as: lib.optionals cond as;
-            pythonExtension = import ../../../top-level/python-packages.nix;
+            pythonExtension = import ../../../sets/python3Packages/manual-packages.nix;
             python2Extension = import ../../misc/resholve/python2-packages.nix;
             extensions = lib.composeManyExtensions (
               [
@@ -95,7 +95,7 @@ let
             );
             aliases =
               self: super:
-              lib.optionalAttrs config.allowAliases (import ../../../top-level/python-aliases.nix lib self super);
+              lib.optionalAttrs config.allowAliases (import ../../../sets/python3Packages/aliases.nix self super);
           in
           makeScopeWithSplicing' {
             inherit otherSplices keep;
