@@ -45,14 +45,6 @@ self: super: with self; {
     openvino-native = pkgs.openvino;
   };
 
-  alibabacloud-darabonba-encode-util =
-    callPackage ./non-by-name/alibabacloud-darabonba-encode-util
-      { };
-
-  alibabacloud-darabonba-signature-util =
-    callPackage ./non-by-name/alibabacloud-darabonba-signature-util
-      { };
-
   aligator = callPackage ./non-by-name/aligator { inherit (pkgs) aligator; };
 
   inherit (callPackage ./non-by-name/aliyun-python-sdk { })
@@ -372,34 +364,6 @@ self: super: with self; {
 
   awkward-cpp = callPackage ./non-by-name/awkward-cpp { inherit (pkgs) cmake ninja; };
 
-  azure-mgmt-iothubprovisioningservices =
-    callPackage ./non-by-name/azure-mgmt-iothubprovisioningservices
-      { };
-
-  azure-mgmt-postgresqlflexibleservers =
-    callPackage ./non-by-name/azure-mgmt-postgresqlflexibleservers
-      { };
-
-  azure-mgmt-recoveryservicesbackup-passivestamp =
-    callPackage ./non-by-name/azure-mgmt-recoveryservicesbackup-passivestamp
-      { };
-
-  azure-mgmt-resource-deploymentscripts =
-    callPackage ./non-by-name/azure-mgmt-resource-deploymentscripts
-      { };
-
-  azure-mgmt-resource-deploymentstacks =
-    callPackage ./non-by-name/azure-mgmt-resource-deploymentstacks
-      { };
-
-  azure-mgmt-servicefabricmanagedclusters =
-    callPackage ./non-by-name/azure-mgmt-servicefabricmanagedclusters
-      { };
-
-  azure-synapse-managedprivateendpoints =
-    callPackage ./non-by-name/azure-synapse-managedprivateendpoints
-      { };
-
   babeltrace = toPythonModule (
     pkgs.babeltrace.override {
       pythonPackages = self;
@@ -564,34 +528,6 @@ self: super: with self; {
   coincurve = callPackage ./non-by-name/coincurve { inherit (pkgs) secp256k1; };
 
   colcon = callPackage ./non-by-name/colcon { };
-
-  colcon-installed-package-information =
-    callPackage ./non-by-name/colcon-installed-package-information
-      { };
-
-  comfyui-workflow-templates-media-api =
-    callPackage ./non-by-name/comfyui-workflow-templates-media-api
-      { };
-
-  comfyui-workflow-templates-media-assets-01 =
-    callPackage ./non-by-name/comfyui-workflow-templates-media-assets-01
-      { };
-
-  comfyui-workflow-templates-media-assets-02 =
-    callPackage ./non-by-name/comfyui-workflow-templates-media-assets-02
-      { };
-
-  comfyui-workflow-templates-media-image =
-    callPackage ./non-by-name/comfyui-workflow-templates-media-image
-      { };
-
-  comfyui-workflow-templates-media-other =
-    callPackage ./non-by-name/comfyui-workflow-templates-media-other
-      { };
-
-  comfyui-workflow-templates-media-video =
-    callPackage ./non-by-name/comfyui-workflow-templates-media-video
-      { };
 
   cot = callPackage ./non-by-name/cot { inherit (pkgs) qemu; };
 
@@ -877,10 +813,6 @@ self: super: with self; {
 
   geoip = callPackage ./non-by-name/geoip { libgeoip = pkgs.geoip; };
 
-  georss-ingv-centro-nazionale-terremoti-client =
-    callPackage ./non-by-name/georss-ingv-centro-nazionale-terremoti-client
-      { };
-
   gfal2-util = callPackage ./non-by-name/gfal2-util { inherit (pkgs) xrootd; };
 
   gmsh = toPythonModule (
@@ -895,14 +827,6 @@ self: super: with self; {
       python3 = python;
     }
   );
-
-  google-cloud-access-context-manager =
-    callPackage ./non-by-name/google-cloud-access-context-manager
-      { };
-
-  google-cloud-bigquery-datatransfer =
-    callPackage ./non-by-name/google-cloud-bigquery-datatransfer
-      { };
 
   google-crc32c = callPackage ./non-by-name/google-crc32c { inherit (pkgs) crc32c; };
 
@@ -1252,10 +1176,6 @@ self: super: with self; {
 
   kaldi-active-grammar = callPackage ./non-by-name/kaldi-active-grammar { };
 
-  keyrings-google-artifactregistry-auth =
-    callPackage ./non-by-name/keyrings-google-artifactregistry-auth
-      { };
-
   keyutils = callPackage ./non-by-name/keyutils { inherit (pkgs) keyutils; };
 
   kiauto = callPackage ./non-by-name/kiauto {
@@ -1549,22 +1469,6 @@ self: super: with self; {
 
   lirc = toPythonModule (pkgs.lirc.override { python3 = python; });
 
-  llama-index-embeddings-google-genai =
-    callPackage ./non-by-name/llama-index-embeddings-google-genai
-      { };
-
-  llama-index-embeddings-huggingface =
-    callPackage ./non-by-name/llama-index-embeddings-huggingface
-      { };
-
-  llama-index-embeddings-openai-like =
-    callPackage ./non-by-name/llama-index-embeddings-openai-like
-      { };
-
-  llama-index-vector-stores-postgres =
-    callPackage ./non-by-name/llama-index-vector-stores-postgres
-      { };
-
   llm = callPackage ./non-by-name/llm { };
 
   lln-libparse = callPackage ./non-by-name/lln-libparse/package.nix { };
@@ -1594,10 +1498,6 @@ self: super: with self; {
   marisa-trie = callPackage ./non-by-name/marisa-trie {
     marisa-cpp = pkgs.marisa;
   };
-
-  markdown-inline-graphviz-extension =
-    callPackage ./non-by-name/markdown-inline-graphviz-extension
-      { };
 
   materialx = toPythonModule (
     pkgs.materialx.override {
@@ -1631,30 +1531,6 @@ self: super: with self; {
 
   mhcflurry = callPackage ./non-by-name/mhcflurry { };
 
-  microsoft-kiota-authentication-azure =
-    callPackage ./non-by-name/microsoft-kiota-authentication-azure
-      { };
-
-  microsoft-kiota-serialization-form =
-    callPackage ./non-by-name/microsoft-kiota-serialization-form
-      { };
-
-  microsoft-kiota-serialization-json =
-    callPackage ./non-by-name/microsoft-kiota-serialization-json
-      { };
-
-  microsoft-kiota-serialization-multipart =
-    callPackage ./non-by-name/microsoft-kiota-serialization-multipart
-      { };
-
-  microsoft-kiota-serialization-text =
-    callPackage ./non-by-name/microsoft-kiota-serialization-text
-      { };
-
-  microsoft-security-utilities-secret-masker =
-    callPackage ./non-by-name/microsoft-security-utilities-secret-masker
-      { };
-
   mim-solvers = callPackage ./non-by-name/mim-solvers { inherit (pkgs) mim-solvers; };
 
   mininet-python = (toPythonModule (pkgs.mininet.override { python3 = python; })).py;
@@ -1666,10 +1542,6 @@ self: super: with self; {
   mitmproxy-linux = callPackage ./non-by-name/mitmproxy-linux { };
 
   mkdocs = callPackage ./non-by-name/mkdocs { };
-
-  mkdocs-git-revision-date-localized-plugin =
-    callPackage ./non-by-name/mkdocs-git-revision-date-localized-plugin
-      { };
 
   mlt = toPythonModule (
     pkgs.mlt.override {
@@ -2202,18 +2074,6 @@ self: super: with self; {
     }
   );
 
-  openinference-instrumentation-claude-agent-sdk =
-    callPackage ./non-by-name/openinference-instrumentation-claude-agent-sdk
-      { };
-
-  openinference-instrumentation-openai =
-    callPackage ./non-by-name/openinference-instrumentation-openai
-      { };
-
-  openinference-semantic-conventions =
-    callPackage ./non-by-name/openinference-semantic-conventions
-      { };
-
   openmm = toPythonModule (
     pkgs.openmm.override {
       python3Packages = self;
@@ -2238,118 +2098,6 @@ self: super: with self; {
   openslide-python = callPackage ./non-by-name/openslide-python {
     inherit (pkgs) openslide;
   };
-
-  opentelemetry-exporter-http-transport =
-    callPackage ./non-by-name/opentelemetry-exporter-http-transport
-      { };
-
-  opentelemetry-exporter-otlp-proto-common =
-    callPackage ./non-by-name/opentelemetry-exporter-otlp-proto-common
-      { };
-
-  opentelemetry-exporter-otlp-proto-grpc =
-    callPackage ./non-by-name/opentelemetry-exporter-otlp-proto-grpc
-      { };
-
-  opentelemetry-exporter-otlp-proto-http =
-    callPackage ./non-by-name/opentelemetry-exporter-otlp-proto-http
-      { };
-
-  opentelemetry-instrumentation-aiohttp-client =
-    callPackage ./non-by-name/opentelemetry-instrumentation-aiohttp-client
-      { };
-
-  opentelemetry-instrumentation-asgi =
-    callPackage ./non-by-name/opentelemetry-instrumentation-asgi
-      { };
-
-  opentelemetry-instrumentation-botocore =
-    callPackage ./non-by-name/opentelemetry-instrumentation-botocore
-      { };
-
-  opentelemetry-instrumentation-celery =
-    callPackage ./non-by-name/opentelemetry-instrumentation-celery
-      { };
-
-  opentelemetry-instrumentation-dbapi =
-    callPackage ./non-by-name/opentelemetry-instrumentation-dbapi
-      { };
-
-  opentelemetry-instrumentation-django =
-    callPackage ./non-by-name/opentelemetry-instrumentation-django
-      { };
-
-  opentelemetry-instrumentation-fastapi =
-    callPackage ./non-by-name/opentelemetry-instrumentation-fastapi
-      { };
-
-  opentelemetry-instrumentation-flask =
-    callPackage ./non-by-name/opentelemetry-instrumentation-flask
-      { };
-
-  opentelemetry-instrumentation-grpc =
-    callPackage ./non-by-name/opentelemetry-instrumentation-grpc
-      { };
-
-  opentelemetry-instrumentation-httpx =
-    callPackage ./non-by-name/opentelemetry-instrumentation-httpx
-      { };
-
-  opentelemetry-instrumentation-logging =
-    callPackage ./non-by-name/opentelemetry-instrumentation-logging
-      { };
-
-  opentelemetry-instrumentation-psycopg =
-    callPackage ./non-by-name/opentelemetry-instrumentation-psycopg
-      { };
-
-  opentelemetry-instrumentation-psycopg2 =
-    callPackage ./non-by-name/opentelemetry-instrumentation-psycopg2
-      { };
-
-  opentelemetry-instrumentation-redis =
-    callPackage ./non-by-name/opentelemetry-instrumentation-redis
-      { };
-
-  opentelemetry-instrumentation-requests =
-    callPackage ./non-by-name/opentelemetry-instrumentation-requests
-      { };
-
-  opentelemetry-instrumentation-sqlalchemy =
-    callPackage ./non-by-name/opentelemetry-instrumentation-sqlalchemy
-      { };
-
-  opentelemetry-instrumentation-sqlite3 =
-    callPackage ./non-by-name/opentelemetry-instrumentation-sqlite3
-      { };
-
-  opentelemetry-instrumentation-system-metrics =
-    callPackage ./non-by-name/opentelemetry-instrumentation-system-metrics
-      { };
-
-  opentelemetry-instrumentation-threading =
-    callPackage ./non-by-name/opentelemetry-instrumentation-threading
-      { };
-
-  opentelemetry-instrumentation-urllib3 =
-    callPackage ./non-by-name/opentelemetry-instrumentation-urllib3
-      { };
-
-  opentelemetry-instrumentation-wsgi =
-    callPackage ./non-by-name/opentelemetry-instrumentation-wsgi
-      { };
-
-  opentelemetry-resourcedetector-gcp =
-    callPackage ./non-by-name/opentelemetry-resourcedetector-gcp
-      { };
-
-  opentelemetry-semantic-conventions =
-    callPackage ./non-by-name/opentelemetry-semantic-conventions
-      { };
-
-  opentelemetry-semantic-conventions-ai =
-    callPackage ./non-by-name/opentelemetry-semantic-conventions-ai
-      { };
 
   openturns = toPythonModule (
     pkgs.openturns.override {
@@ -3071,10 +2819,6 @@ self: super: with self; {
 
   sentry-sdk = callPackage ./non-by-name/sentry-sdk/default.nix { };
 
-  setuptools-declarative-requirements =
-    callPackage ./non-by-name/setuptools-declarative-requirements
-      { };
-
   sherpa-onnx = callPackage ./non-by-name/sherpa-onnx {
     sherpa-onnx = pkgs.sherpa-onnx.override {
       python3Packages = self;
@@ -3135,30 +2879,6 @@ self: super: with self; {
   snack = toPythonModule (pkgs.newt.override { python3 = self.python; });
 
   snakemake = toPythonModule (pkgs.snakemake.override { python3Packages = self; });
-
-  snakemake-executor-plugin-cluster-generic =
-    callPackage ./non-by-name/snakemake-executor-plugin-cluster-generic
-      { };
-
-  snakemake-interface-executor-plugins =
-    callPackage ./non-by-name/snakemake-interface-executor-plugins
-      { };
-
-  snakemake-interface-logger-plugins =
-    callPackage ./non-by-name/snakemake-interface-logger-plugins
-      { };
-
-  snakemake-interface-report-plugins =
-    callPackage ./non-by-name/snakemake-interface-report-plugins
-      { };
-
-  snakemake-interface-scheduler-plugins =
-    callPackage ./non-by-name/snakemake-interface-scheduler-plugins
-      { };
-
-  snakemake-interface-storage-plugins =
-    callPackage ./non-by-name/snakemake-interface-storage-plugins
-      { };
 
   soapysdr = toPythonModule (
     pkgs.soapysdr.override {
