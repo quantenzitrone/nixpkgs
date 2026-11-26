@@ -300,8 +300,6 @@ self: super: with self; {
     }
   );
 
-  angr = callPackage ./non-by-name/angr { };
-
   angrcli = callPackage ./non-by-name/angrcli { inherit (pkgs) coreutils; };
 
   anki-mac-helper = callPackage ./non-by-name/anki-mac-helper {
@@ -335,8 +333,6 @@ self: super: with self; {
   ast-grep-py = callPackage ./non-by-name/ast-grep-py { };
 
   atopile-kicad-python = callPackage ./non-by-name/atopile-kicad-python { };
-
-  attrs = callPackage ./non-by-name/attrs { };
 
   audioop-lts = if pythonAtLeast "3.13" then callPackage ./non-by-name/audioop-lts { } else null;
 
@@ -526,8 +522,6 @@ self: super: with self; {
   coal = callPackage ./non-by-name/coal { inherit (pkgs) coal; };
 
   coincurve = callPackage ./non-by-name/coincurve { inherit (pkgs) secp256k1; };
-
-  colcon = callPackage ./non-by-name/colcon { };
 
   cot = callPackage ./non-by-name/cot { inherit (pkgs) qemu; };
 
@@ -737,8 +731,6 @@ self: super: with self; {
 
   flashinfer-python = callPackage ./non-by-name/flashinfer-python { };
 
-  flask = callPackage ./non-by-name/flask { };
-
   flatbuffers = callPackage ./non-by-name/flatbuffers { inherit (pkgs) flatbuffers; };
 
   fluent-pygments = callPackage ./non-by-name/python-fluent/fluent-pygments.nix { };
@@ -850,12 +842,8 @@ self: super: with self; {
 
   graph-tool = callPackage ./non-by-name/graph-tool { inherit (pkgs) cgal; };
 
-  green = callPackage ./non-by-name/green { };
-
   # built-in for pypi
   greenlet = if isPyPy then null else callPackage ./non-by-name/greenlet { };
-
-  gruut = callPackage ./non-by-name/gruut { };
 
   gruut-ipa = callPackage ./non-by-name/gruut-ipa { inherit (pkgs) espeak; };
 
@@ -1140,8 +1128,6 @@ self: super: with self; {
     }
   );
 
-  jax = callPackage ./non-by-name/jax { };
-
   jaxlib = jaxlib-bin;
 
   jaxlib-bin = callPackage ./non-by-name/jaxlib/bin.nix { };
@@ -1157,8 +1143,6 @@ self: super: with self; {
   jupyter-repo2docker = callPackage ./non-by-name/jupyter-repo2docker {
     pkgs-docker = pkgs.docker;
   };
-
-  jupyterlab = callPackage ./non-by-name/jupyterlab { };
 
   jupyterlab-git-core = callPackage ./non-by-name/jupyterlab-git-core { };
 
@@ -1469,8 +1453,6 @@ self: super: with self; {
 
   lirc = toPythonModule (pkgs.lirc.override { python3 = python; });
 
-  llm = callPackage ./non-by-name/llm { };
-
   lln-libparse = callPackage ./non-by-name/lln-libparse/package.nix { };
 
   llvmlite = callPackage ./non-by-name/llvmlite {
@@ -1540,8 +1522,6 @@ self: super: with self; {
   mistune_2 = callPackage ./non-by-name/mistune/2.nix { };
 
   mitmproxy-linux = callPackage ./non-by-name/mitmproxy-linux { };
-
-  mkdocs = callPackage ./non-by-name/mkdocs { };
 
   mlt = toPythonModule (
     pkgs.mlt.override {
@@ -2120,8 +2100,6 @@ self: super: with self; {
     openvino-tokenizers-native = pkgs.openvino-tokenizers;
   };
 
-  opuslib = callPackage ./non-by-name/opuslib { };
-
   ortools = callPackage ./non-by-name/ortools {
     or-tools = pkgs.or-tools.override { python3 = self.python; };
   };
@@ -2166,8 +2144,6 @@ self: super: with self; {
       pythonSupport = true;
     }
   );
-
-  pgpy = callPackage ./non-by-name/pgpy { };
 
   pigpio = toPythonModule (
     pkgs.pigpio.override {
@@ -2523,8 +2499,6 @@ self: super: with self; {
 
   pysearpc = toPythonModule (pkgs.libsearpc.override { python3 = self.python; });
 
-  pyserial = callPackage ./non-by-name/pyserial { };
-
   pyshark = callPackage ./non-by-name/pyshark { };
 
   pyside2 = toPythonModule (callPackage ./non-by-name/pyside2 { inherit (pkgs) cmake ninja qt5; });
@@ -2705,8 +2679,6 @@ self: super: with self; {
     inherit (pkgs) cmake;
   };
 
-  qiskit = callPackage ./non-by-name/qiskit { };
-
   qrcodegen = callPackage ./non-by-name/qrcodegen { qrcodegen = pkgs.qrcodegen; };
 
   qt6 = pkgs.qt6.override { python3 = self.python; };
@@ -2728,8 +2700,6 @@ self: super: with self; {
   };
 
   ratarmountcore = callPackage ./non-by-name/ratarmountcore { inherit (pkgs) zstd; };
-
-  ray = callPackage ./non-by-name/ray { };
 
   raylib = callPackage ./non-by-name/raylib { inherit (pkgs) raylib; };
 
@@ -2907,8 +2877,6 @@ self: super: with self; {
   spacy-lookups-data = callPackage ./non-by-name/spacy/lookups-data.nix { };
 
   spacy-models = callPackage ./non-by-name/spacy/models.nix { inherit (pkgs) jq; };
-
-  sphinx = callPackage ./non-by-name/sphinx { };
 
   sphinx-automodapi = callPackage ./non-by-name/sphinx-automodapi {
     graphviz = pkgs.graphviz;
@@ -3168,8 +3136,6 @@ self: super: with self; {
   typecode-libmagic = callPackage ./non-by-name/typecode/libmagic.nix {
     inherit (pkgs) file zlib;
   };
-
-  types-aiobotocore = callPackage ./non-by-name/types-aiobotocore { };
 
   inherit (callPackage ./non-by-name/types-aiobotocore-packages { })
     types-aiobotocore-accessanalyzer
@@ -3597,8 +3563,6 @@ self: super: with self; {
   );
 
   vyper = callPackage ../../development/compilers/vyper { };
-
-  wagtail = callPackage ./non-by-name/wagtail { };
 
   warp-lang = callPackage ./non-by-name/warp-lang {
     # warp targets LLVM 22 in its build-from-source path (build_llvm.py clones llvmorg-22.x)
