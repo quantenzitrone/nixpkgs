@@ -9,6 +9,12 @@
       "attr_path": [
         "fishPlugins"
       ]
+    },
+    {
+      "by_name_subpath": "pkgs/sets/python3Packages/by-name",
+      "attr_path": [
+        "python3Packages"
+      ]
     }
   ]
 }
