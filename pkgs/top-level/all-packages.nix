@@ -1868,7 +1868,7 @@ with pkgs;
     callPackage ../servers/search/elasticsearch/plugins.nix { }
   );
 
-  emborg = python3Packages.callPackage ../sets/python3Packages/non-by-name/emborg { };
+  emborg = python3Packages.emborg;
 
   executor = with python3Packages; toPythonApplication executor;
 
