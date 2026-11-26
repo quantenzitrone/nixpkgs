@@ -348,7 +348,7 @@ with pkgs;
 
   dnf-plugins-core = with python3Packages; toPythonApplication dnf-plugins-core;
 
-  dnf4 = python3Packages.callPackage ../sets/python3Packages/non-by-name/dnf4/wrapper.nix { };
+  dnf4 = python3Packages.callPackage ../sets/python3Packages/by-name/dn/dnf4/wrapper.nix { };
 
   inherit (gridlock) nyarr;
 

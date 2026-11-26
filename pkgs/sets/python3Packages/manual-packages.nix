@@ -32,12 +32,6 @@ self: super: with self; {
   # by_regex ensures inherit statements are sorted after the (first) attribute name that is inherited.
   # keep-sorted start block=yes newline_separated=yes by_regex=["(?:inherit\\s+\\([^)]+\\)\\n?\\s*)?(.+)"]
 
-  aardwolf = callPackage ./non-by-name/aardwolf { };
-
-  actdiag = callPackage ./non-by-name/actdiag { };
-
-  adguardhome = callPackage ./non-by-name/adguardhome { };
-
   adios2 = toPythonModule (
     pkgs.adios2.override {
       python3Packages = self;
@@ -50,16 +44,6 @@ self: super: with self; {
   ai-edge-litert = callPackage ./non-by-name/ai-edge-litert {
     openvino-native = pkgs.openvino;
   };
-
-  aiohttp-jinja2 = callPackage ./non-by-name/aiohttp-jinja2 { };
-
-  aioimaplib = callPackage ./non-by-name/aioimaplib { };
-
-  aiomultiprocess = callPackage ./non-by-name/aiomultiprocess { };
-
-  aioquic_1_2 = callPackage ./non-by-name/aioquic_1_2 { };
-
-  aioresponses = callPackage ./non-by-name/aioresponses { };
 
   alibabacloud-darabonba-encode-util =
     callPackage ./non-by-name/alibabacloud-darabonba-encode-util
@@ -318,8 +302,6 @@ self: super: with self; {
     aliyun-python-sdk-xtrace
     ;
 
-  amazon-ion = callPackage ./non-by-name/amazon-ion { };
-
   amdsmi = toPythonModule (
     pkgs.rocmPackages.amdsmi.override {
       inherit python;
@@ -348,16 +330,6 @@ self: super: with self; {
 
   anytree = callPackage ./non-by-name/anytree { inherit (pkgs) graphviz; };
 
-  aodhclient = callPackage ./non-by-name/aodhclient { };
-
-  apache-beam = callPackage ./non-by-name/apache-beam { };
-
-  apscheduler = callPackage ./non-by-name/apscheduler { };
-
-  arelle-release = callPackage ./non-by-name/arelle-release { };
-
-  argh = callPackage ./non-by-name/argh { };
-
   argostranslate = callPackage ./non-by-name/argostranslate {
     ctranslate2-cpp = pkgs.ctranslate2;
   };
@@ -368,21 +340,11 @@ self: super: with self; {
 
   arro3-io = (callPackage ./non-by-name/arro3 { }).arro3-io;
 
-  ast-grep-cli = callPackage ./non-by-name/ast-grep-cli { };
-
   ast-grep-py = callPackage ./non-by-name/ast-grep-py { };
-
-  astor = callPackage ./non-by-name/astor { };
-
-  astropy-helpers = callPackage ./non-by-name/astropy-helpers { };
-
-  asyncssh = callPackage ./non-by-name/asyncssh { };
 
   atopile-kicad-python = callPackage ./non-by-name/atopile-kicad-python { };
 
   attrs = callPackage ./non-by-name/attrs { };
-
-  attrs-strict = callPackage ./non-by-name/attrs-strict { };
 
   audioop-lts = if pythonAtLeast "3.13" then callPackage ./non-by-name/audioop-lts { } else null;
 
@@ -400,8 +362,6 @@ self: super: with self; {
       unzip
       ;
   };
-
-  av = callPackage ./non-by-name/av { };
 
   avahi = toPythonModule (
     pkgs.avahi.override {
@@ -455,8 +415,6 @@ self: super: with self; {
     }
   );
 
-  backoff = callPackage ./non-by-name/backoff { };
-
   backports-asyncio-runner =
     if pythonAtLeast "3.12" then null else callPackage ./non-by-name/backports-asyncio-runner { };
 
@@ -475,15 +433,9 @@ self: super: with self; {
     inherit (pkgs.ocaml-ng.ocamlPackages_4_14) bap;
   };
 
-  base2048 = callPackage ./non-by-name/base2048 { };
-
   basemap = callPackage ./non-by-name/basemap { };
 
-  bash-kernel = callPackage ./non-by-name/bash-kernel { };
-
   bcc = toPythonModule (pkgs.bcc.override { python3Packages = self; });
-
-  bce-python-sdk = callPackage ./non-by-name/bce-python-sdk { };
 
   bcrypt =
     if stdenv.hostPlatform.system == "i686-linux" then
@@ -494,8 +446,6 @@ self: super: with self; {
   beancount = callPackage ./non-by-name/beancount { };
 
   beancount_2 = callPackage ./non-by-name/beancount/2.nix { };
-
-  beetcamp = callPackage ./non-by-name/beetcamp { };
 
   beets = callPackage ./non-by-name/beets {
     inherit (pkgs) chromaprint;
@@ -515,13 +465,7 @@ self: super: with self; {
 
   bibtexparser_2 = callPackage ./non-by-name/bibtexparser/2.nix { };
 
-  bitsandbytes = callPackage ./non-by-name/bitsandbytes { };
-
   black = callPackage ./non-by-name/black { };
-
-  blake3 = callPackage ./non-by-name/blake3 { };
-
-  bokeh = callPackage ./non-by-name/bokeh { };
 
   # Build boost for this specific Python version
   # TODO: use separate output for libboost_python.so
@@ -540,19 +484,9 @@ self: super: with self; {
 
   borb_2 = callPackage ./non-by-name/borb/2.nix { };
 
-  bork = callPackage ./non-by-name/bork { };
-
   botan3 = callPackage ./non-by-name/botan3 { inherit (pkgs) botan3; };
 
-  bqscales = callPackage ./non-by-name/bqscales { };
-
   brainflow = callPackage ./non-by-name/brainflow { inherit (pkgs) brainflow; };
-
-  brax = callPackage ./non-by-name/brax { };
-
-  breezy = callPackage ./non-by-name/breezy { };
-
-  brian2 = callPackage ./non-by-name/brian2 { };
 
   brotli = callPackage ./non-by-name/brotli {
     inherit (pkgs) brotli;
@@ -560,11 +494,7 @@ self: super: with self; {
 
   brotlicffi = callPackage ./non-by-name/brotlicffi { inherit (pkgs) brotli; };
 
-  buienradar = callPackage ./non-by-name/buienradar { };
-
   bytesize = toPythonModule (pkgs.libbytesize.override { python3Packages = self; });
-
-  cached-property = callPackage ./non-by-name/cached-property { };
 
   caffe = toPythonModule (
     pkgs.caffe.override {
@@ -573,17 +503,11 @@ self: super: with self; {
     }
   );
 
-  cairocffi = callPackage ./non-by-name/cairocffi { };
-
-  camelot = callPackage ./non-by-name/camelot { };
-
   capstone = callPackage ./non-by-name/capstone { inherit (pkgs) capstone; };
 
   capstone_4 = callPackage ./non-by-name/capstone/4.nix {
     inherit (pkgs) capstone_4;
   };
-
-  carbon = callPackage ./non-by-name/carbon { };
 
   casadi = toPythonModule (
     pkgs.casadi.override {
@@ -606,13 +530,7 @@ self: super: with self; {
     };
   };
 
-  catppuccin = callPackage ./non-by-name/catppuccin { };
-
   cccolutils = callPackage ./non-by-name/cccolutils { krb5-c = pkgs.krb5; };
-
-  celery = callPackage ./non-by-name/celery { };
-
-  certifi = callPackage ./non-by-name/certifi { };
 
   cffi = if isPyPy then null else callPackage ./non-by-name/cffi { };
 
@@ -622,8 +540,6 @@ self: super: with self; {
 
   chardet_5 = callPackage ./non-by-name/chardet/5.nix { };
 
-  check-manifest = callPackage ./non-by-name/check-manifest { };
-
   chromadb = callPackage ./non-by-name/chromadb { zstd-c = pkgs.zstd; };
 
   ckzg = callPackage ./non-by-name/ckzg {
@@ -632,10 +548,6 @@ self: super: with self; {
 
   cle = callPackage ./non-by-name/cle { };
 
-  clickhouse-sqlalchemy = callPackage ./non-by-name/clickhouse-sqlalchemy { };
-
-  cliff = callPackage ./non-by-name/cliff { };
-
   clingo = toPythonModule (
     pkgs.clingo.override {
       inherit python;
@@ -643,13 +555,7 @@ self: super: with self; {
     }
   );
 
-  clr-loader = callPackage ./non-by-name/clr-loader { };
-
   cmake = callPackage ./non-by-name/cmake { inherit (pkgs) cmake; };
-
-  cmd2_3 = callPackage ./non-by-name/cmd2_3 { };
-
-  cmdstanpy = callPackage ./non-by-name/cmdstanpy { };
 
   cmigemo = callPackage ./non-by-name/cmigemo { inherit (pkgs) cmigemo; };
 
@@ -662,8 +568,6 @@ self: super: with self; {
   colcon-installed-package-information =
     callPackage ./non-by-name/colcon-installed-package-information
       { };
-
-  colour = callPackage ./non-by-name/colour { };
 
   comfyui-workflow-templates-media-api =
     callPackage ./non-by-name/comfyui-workflow-templates-media-api
@@ -689,10 +593,6 @@ self: super: with self; {
     callPackage ./non-by-name/comfyui-workflow-templates-media-video
       { };
 
-  conda = callPackage ./non-by-name/conda { };
-
-  consul = callPackage ./non-by-name/consul { };
-
   cot = callPackage ./non-by-name/cot { inherit (pkgs) qemu; };
 
   cppe = callPackage ./non-by-name/cppe { inherit (pkgs) cppe; };
@@ -703,15 +603,9 @@ self: super: with self; {
 
   crocoddyl = callPackage ./non-by-name/crocoddyl { inherit (pkgs) crocoddyl; };
 
-  cryptodatahub = callPackage ./non-by-name/cryptodatahub { };
-
-  cryptography = callPackage ./non-by-name/cryptography { };
-
   cryptolyzer = callPackage ./non-by-name/cryptolyzer { };
 
   cryptoparser = callPackage ./non-by-name/cryptoparser { };
-
-  css-inline = callPackage ./non-by-name/css-inline { };
 
   ctranslate2 = callPackage ./non-by-name/ctranslate2 {
     ctranslate2-cpp = pkgs.ctranslate2;
@@ -720,18 +614,6 @@ self: super: with self; {
   cuda-bindings = callPackage ./non-by-name/cuda-bindings { };
 
   cuda-cccl = callPackage ./non-by-name/cuda-cccl { };
-
-  cuda-core = callPackage ./non-by-name/cuda-core { };
-
-  cuda-tile = callPackage ./non-by-name/cuda-tile { };
-
-  cupy = callPackage ./non-by-name/cupy { };
-
-  curl-cffi = callPackage ./non-by-name/curl-cffi { };
-
-  customtkinter = callPackage ./non-by-name/customtkinter { };
-
-  cx-freeze = callPackage ./non-by-name/cx-freeze { };
 
   cynthion = callPackage ./non-by-name/cynthion { };
 
@@ -752,51 +634,23 @@ self: super: with self; {
     }
   );
 
-  dataclasses-json = callPackage ./non-by-name/dataclasses-json { };
-
   datafusion = callPackage ./non-by-name/datafusion {
     protoc = pkgs.protobuf;
   };
-
-  datalad-gooey = callPackage ./non-by-name/datalad-gooey { };
 
   datasets = callPackage ./non-by-name/datasets { };
 
   datasets_3 = callPackage ./non-by-name/datasets/3.nix { };
 
-  dbf = callPackage ./non-by-name/dbf { };
-
-  dbt-core = callPackage ./non-by-name/dbt-core { };
-
   dbus-python = callPackage ./non-by-name/dbus-python { inherit (pkgs) dbus; };
-
-  deal = callPackage ./non-by-name/deal { };
-
-  debtcollector = callPackage ./non-by-name/debtcollector { };
-
-  debugpy = callPackage ./non-by-name/debugpy { };
-
-  deep-gemm = callPackage ./non-by-name/deep-gemm { };
-
-  deepspeed = callPackage ./non-by-name/deepspeed { };
-
-  deltachat2 = callPackage ./non-by-name/deltachat2 { };
 
   deltalake = callPackage ./non-by-name/deltalake { inherit (pkgs) zstd; };
 
-  devito = callPackage ./non-by-name/devito { };
-
   devpi-server = callPackage ../../by-name/de/devpi-server/unwrapped.nix { };
-
-  dfir-ntfs = callPackage ./non-by-name/dfir_ntfs { };
 
   dftd4 = callPackage ../../by-name/df/dftd4/python.nix {
     inherit (pkgs) dftd4;
   };
-
-  diagrams = callPackage ./non-by-name/diagrams { };
-
-  dirsearch = callPackage ./non-by-name/dirsearch { };
 
   distutils = if pythonOlder "3.12" then null else callPackage ./non-by-name/distutils { };
 
@@ -809,12 +663,6 @@ self: super: with self; {
     inherit (pkgs) openldap;
   };
 
-  django-cachalot = callPackage ./non-by-name/django-cachalot { };
-
-  django-cacheops = callPackage ./non-by-name/django-cacheops { };
-
-  django-compressor = callPackage ./non-by-name/django-compressor { };
-
   django-extensions = callPackage ./non-by-name/django-extensions { };
 
   django-oauth-toolkit = callPackage ./non-by-name/django-oauth-toolkit { };
@@ -822,8 +670,6 @@ self: super: with self; {
   django-oauth-toolkit_2 = callPackage ./non-by-name/django-oauth-toolkit/2.nix { };
 
   django-stubs-ext = callPackage ./non-by-name/django-stubs-ext { };
-
-  django-waffle = callPackage ./non-by-name/django-waffle { };
 
   # LTS in extended support phase
   django_5 = callPackage ./non-by-name/django/5.nix { };
@@ -842,29 +688,15 @@ self: super: with self; {
     inherit (pkgs) abseil-cpp;
   };
 
-  dnf4 = callPackage ./non-by-name/dnf4 { };
-
-  docformatter = callPackage ./non-by-name/docformatter { };
-
   docling-parse = callPackage ./non-by-name/docling-parse {
     loguru-cpp = pkgs.loguru;
   };
 
-  dogtail = callPackage ./non-by-name/dogtail { };
-
   dot2tex = callPackage ./non-by-name/dot2tex { inherit (pkgs) graphviz; };
-
-  dpcontracts = callPackage ./non-by-name/dpcontracts { };
-
-  dramatiq-abort = callPackage ./non-by-name/dramatiq-abort { };
-
-  drf-flex-fields = callPackage ./non-by-name/drf-flex-fields { };
 
   duckdb = callPackage ./non-by-name/duckdb { inherit (pkgs) duckdb; };
 
   dulwich = callPackage ./non-by-name/dulwich { inherit (pkgs) gnupg; };
-
-  easyenergy = callPackage ./non-by-name/easyenergy { };
 
   eccodes = toPythonModule (
     pkgs.eccodes.override {
@@ -873,15 +705,11 @@ self: super: with self; {
     }
   );
 
-  ecdsa = callPackage ./non-by-name/ecdsa { };
-
   echo = callPackage ./non-by-name/echo {
     inherit (pkgs) mesa;
   };
 
   edlib = callPackage ./non-by-name/edlib { inherit (pkgs) edlib; };
-
-  eduvpn-common = callPackage ./non-by-name/eduvpn-common { };
 
   elastic-transport = callPackage ./non-by-name/elastic-transport { };
 
@@ -890,12 +718,6 @@ self: super: with self; {
   elasticsearchdsl = self.elasticsearch-dsl;
 
   elfdeps = toPythonModule (pkgs.elfdeps.override { python3Packages = self; });
-
-  elgato = callPackage ./non-by-name/elgato { };
-
-  emerge = callPackage ./non-by-name/emerge { };
-
-  encutils = callPackage ./non-by-name/encutils { };
 
   entrance = callPackage ./non-by-name/entrance { routerFeatures = false; };
 
@@ -907,17 +729,11 @@ self: super: with self; {
 
   es-client_8 = callPackage ./non-by-name/es-client/8.nix { };
 
-  esp-idf-size = callPackage ./non-by-name/esp-idf-size { };
-
-  espeak-phonemizer = callPackage ./non-by-name/espeak-phonemizer { };
-
   etcd3 = callPackage ./non-by-name/etcd3 { inherit (pkgs) etcd; };
 
   example-robot-data = callPackage ./non-by-name/example-robot-data {
     inherit (pkgs) example-robot-data;
   };
-
-  exceptiongroup = callPackage ./non-by-name/exceptiongroup { };
 
   exiv2 = callPackage ./non-by-name/exiv2 { inherit (pkgs) exiv2; };
 
@@ -947,8 +763,6 @@ self: super: with self; {
     }
   );
 
-  fabulous = callPackage ./non-by-name/fabulous { };
-
   face-recognition = callPackage ./non-by-name/face-recognition { };
 
   face-recognition-models = callPackage ./non-by-name/face-recognition/models.nix { };
@@ -977,11 +791,7 @@ self: super: with self; {
     }
   );
 
-  fastuuid = callPackage ./non-by-name/fastuuid { };
-
   fava-portfolio-returns = callPackage ./non-by-name/fava-portfolio-returns { };
-
-  ffmpeg-python = callPackage ./non-by-name/ffmpeg-python { };
 
   finufft = callPackage ./non-by-name/finufft {
     inherit (pkgs) finufft;
@@ -989,23 +799,11 @@ self: super: with self; {
 
   flash-attn-3 = callPackage ./non-by-name/flash-attn-3 { };
 
-  flash-mla = callPackage ./non-by-name/flash-mla { };
-
-  flashinfer-jit-cache = callPackage ./non-by-name/flashinfer-jit-cache { };
-
   flashinfer-python = callPackage ./non-by-name/flashinfer-python { };
 
   flask = callPackage ./non-by-name/flask { };
 
-  flask-restful = callPackage ./non-by-name/flask-restful { };
-
   flatbuffers = callPackage ./non-by-name/flatbuffers { inherit (pkgs) flatbuffers; };
-
-  fleep = callPackage ./non-by-name/fleep { };
-
-  flit-gettext = callPackage ./non-by-name/flit-gettext { };
-
-  floret = callPackage ./non-by-name/floret { };
 
   fluent-pygments = callPackage ./non-by-name/python-fluent/fluent-pygments.nix { };
 
@@ -1018,10 +816,6 @@ self: super: with self; {
   flufl-i18n = callPackage ./non-by-name/flufl/i18n.nix { };
 
   flufl-lock = callPackage ./non-by-name/flufl/lock.nix { };
-
-  fmpy = callPackage ./non-by-name/fmpy { };
-
-  fontbakery = callPackage ./non-by-name/fontbakery { };
 
   fontforge = toPythonModule (
     pkgs.fontforge.override {
@@ -1037,16 +831,6 @@ self: super: with self; {
   };
 
   freesasa = callPackage ./non-by-name/freesasa { inherit (pkgs) freesasa; };
-
-  freetype-py = callPackage ./non-by-name/freetype-py { };
-
-  frida-python = callPackage ./non-by-name/frida-python { };
-
-  fs = callPackage ./non-by-name/fs { };
-
-  funcsigs = callPackage ./non-by-name/funcsigs { };
-
-  funsor = callPackage ./non-by-name/funsor { };
 
   fx2 = callPackage ./non-by-name/fx2 { };
 
@@ -1084,8 +868,6 @@ self: super: with self; {
     }
   );
 
-  gensim = callPackage ./non-by-name/gensim { };
-
   geoarrow-c = callPackage ./non-by-name/geoarrow-c { };
 
   inherit (callPackage ./non-by-name/geoarrow-rust { })
@@ -1100,14 +882,6 @@ self: super: with self; {
       { };
 
   gfal2-util = callPackage ./non-by-name/gfal2-util { inherit (pkgs) xrootd; };
-
-  git-annex-adapter = callPackage ./non-by-name/git-annex-adapter { };
-
-  github3-py = callPackage ./non-by-name/github3-py { };
-
-  gluonts = callPackage ./non-by-name/gluonts { };
-
-  glymur = callPackage ./non-by-name/glymur { };
 
   gmsh = toPythonModule (
     pkgs.gmsh.override {
@@ -1132,8 +906,6 @@ self: super: with self; {
 
   google-crc32c = callPackage ./non-by-name/google-crc32c { inherit (pkgs) crc32c; };
 
-  gower = callPackage ./non-by-name/gower { };
-
   gpaw = callPackage ./non-by-name/gpaw {
     inherit (pkgs) libxc;
   };
@@ -1144,8 +916,6 @@ self: super: with self; {
 
   gprof2dot = callPackage ./non-by-name/gprof2dot { inherit (pkgs) graphviz; };
 
-  gpuctypes = callPackage ./non-by-name/gpuctypes { };
-
   gradio = callPackage ./non-by-name/gradio { };
 
   gradio-client = callPackage ./non-by-name/gradio/client.nix {
@@ -1154,22 +924,12 @@ self: super: with self; {
 
   grafanalib = callPackage ./non-by-name/grafanalib/default.nix { };
 
-  grandalf = callPackage ./non-by-name/grandalf { };
-
-  granian = callPackage ./non-by-name/granian { };
-
   graph-tool = callPackage ./non-by-name/graph-tool { inherit (pkgs) cgal; };
-
-  graphviz = callPackage ./non-by-name/graphviz { };
-
-  graspologic-native = callPackage ./non-by-name/graspologic-native { };
 
   green = callPackage ./non-by-name/green { };
 
   # built-in for pypi
   greenlet = if isPyPy then null else callPackage ./non-by-name/greenlet { };
-
-  greynoise = callPackage ./non-by-name/greynoise { };
 
   gruut = callPackage ./non-by-name/gruut { };
 
@@ -1192,8 +952,6 @@ self: super: with self; {
     }
   );
 
-  gyp = callPackage ./non-by-name/gyp { };
-
   h3 = callPackage ./non-by-name/h3 { h3 = pkgs.h3_4; };
 
   h5py-mpi = self.h5py.override { hdf5 = pkgs.hdf5-mpi; };
@@ -1211,11 +969,7 @@ self: super: with self; {
     inherit (pkgs) zstd lz4;
   };
 
-  hdmedians = callPackage ./non-by-name/hdmedians { };
-
   hepmc3 = toPythonModule (pkgs.hepmc3.override { inherit python; });
-
-  hg-git = callPackage ./non-by-name/hg-git { };
 
   hid = callPackage ./non-by-name/hid { inherit (pkgs) hidapi; };
 
@@ -1227,17 +981,7 @@ self: super: with self; {
     callPackage ./non-by-name/home-assistant-chip-wheels { }
   );
 
-  homf = callPackage ./non-by-name/homf { };
-
   horizon-eda = callPackage ./non-by-name/horizon-eda { inherit (pkgs) horizon-eda; };
-
-  html5lib = callPackage ./non-by-name/html5lib { };
-
-  httpretty = callPackage ./non-by-name/httpretty { };
-
-  httpsig = callPackage ./non-by-name/httpsig { };
-
-  httpx = callPackage ./non-by-name/httpx { };
 
   inherit (callPackage ./non-by-name/huaweicloudsdk { })
     huaweicloudsdkaad
@@ -1433,17 +1177,7 @@ self: super: with self; {
 
   huggingface-hub_0 = callPackage ./non-by-name/huggingface-hub/0.nix { };
 
-  hurry-filesize = callPackage ./non-by-name/hurry-filesize { };
-
-  hydra-core = callPackage ./non-by-name/hydra-core { };
-
-  hypothesis = callPackage ./non-by-name/hypothesis { };
-
   i2c-tools = callPackage ./non-by-name/i2c-tools { inherit (pkgs) i2c-tools; };
-
-  i3ipc = callPackage ./non-by-name/i3ipc { };
-
-  icdiff = callPackage ./non-by-name/icdiff { };
 
   icoextract = toPythonModule (pkgs.icoextract.override { python3Packages = self; });
 
@@ -1452,10 +1186,6 @@ self: super: with self; {
   };
 
   igraph = callPackage ./non-by-name/igraph { inherit (pkgs) igraph; };
-
-  imageio-ffmpeg = callPackage ./non-by-name/imageio-ffmpeg { };
-
-  img2pdf = callPackage ./non-by-name/img2pdf { };
 
   imread = callPackage ./non-by-name/imread {
     inherit (pkgs)
@@ -1469,24 +1199,6 @@ self: super: with self; {
   indexed-gzip = callPackage ./non-by-name/indexed-gzip { inherit (pkgs) zlib; };
 
   indexed-zstd = callPackage ./non-by-name/indexed-zstd { inherit (pkgs) zstd; };
-
-  influxdb = callPackage ./non-by-name/influxdb { };
-
-  inkex = callPackage ./non-by-name/inkex { };
-
-  installer = callPackage ./non-by-name/installer { };
-
-  interface-meta = callPackage ./non-by-name/interface-meta { };
-
-  invisible-watermark = callPackage ./non-by-name/invisible-watermark { };
-
-  invocations = callPackage ./non-by-name/invocations { };
-
-  ipykernel = callPackage ./non-by-name/ipykernel { };
-
-  ipyniivue = callPackage ./non-by-name/ipyniivue { };
-
-  irc = callPackage ./non-by-name/irc { };
 
   ironcalc = callPackage ../../by-name/ir/ironcalc/python.nix {
     inherit (pkgs) ironcalc;
@@ -1504,8 +1216,6 @@ self: super: with self; {
     }
   );
 
-  jack-client = callPackage ./non-by-name/jack-client { };
-
   jax = callPackage ./non-by-name/jax { };
 
   jaxlib = jaxlib-bin;
@@ -1516,17 +1226,9 @@ self: super: with self; {
     snappy-cpp = pkgs.snappy;
   };
 
-  jellyfish = callPackage ./non-by-name/jellyfish { };
-
-  jinja2 = callPackage ./non-by-name/jinja2 { };
-
-  jiter = callPackage ./non-by-name/jiter { };
-
   jq = callPackage ./non-by-name/jq { inherit (pkgs) jq; };
 
   jupyter-collaboration = callPackage ./non-by-name/jupyter-collaboration { };
-
-  jupyter-core = callPackage ./non-by-name/jupyter-core { };
 
   jupyter-repo2docker = callPackage ./non-by-name/jupyter-repo2docker {
     pkgs-docker = pkgs.docker;
@@ -1535,10 +1237,6 @@ self: super: with self; {
   jupyterlab = callPackage ./non-by-name/jupyterlab { };
 
   jupyterlab-git-core = callPackage ./non-by-name/jupyterlab-git-core { };
-
-  jupyterlab-server = callPackage ./non-by-name/jupyterlab-server { };
-
-  jupytext = callPackage ./non-by-name/jupytext { };
 
   k5test = callPackage ./non-by-name/k5test {
     inherit (pkgs) findutils;
@@ -1552,25 +1250,13 @@ self: super: with self; {
     }
   );
 
-  kaitaistruct = callPackage ./non-by-name/kaitaistruct { };
-
   kaldi-active-grammar = callPackage ./non-by-name/kaldi-active-grammar { };
-
-  kaleido = callPackage ./non-by-name/kaleido { };
-
-  kbnf = callPackage ./non-by-name/kbnf { };
-
-  kconfiglib = callPackage ./non-by-name/kconfiglib { };
-
-  keymap-drawer = callPackage ./non-by-name/keymap-drawer { };
 
   keyrings-google-artifactregistry-auth =
     callPackage ./non-by-name/keyrings-google-artifactregistry-auth
       { };
 
   keyutils = callPackage ./non-by-name/keyutils { inherit (pkgs) keyutils; };
-
-  khanaa = callPackage ./non-by-name/khanaa { };
 
   kiauto = callPackage ./non-by-name/kiauto {
     kicadPkg = pkgs.kicad;
@@ -1579,8 +1265,6 @@ self: super: with self; {
   kicad = toPythonModule (pkgs.kicad.override { python3 = python; }).src;
 
   kicad-python = callPackage ./non-by-name/kicad-python { };
-
-  kivy-garden = callPackage ./non-by-name/kivy-garden { };
 
   klayout = callPackage ./non-by-name/klayout { inherit (pkgs) klayout; };
 
@@ -1591,11 +1275,7 @@ self: super: with self; {
     }
   );
 
-  knx-telegram-store = callPackage ./non-by-name/knx-telegram-store { };
-
   krb5 = callPackage ./non-by-name/krb5 { krb5-c = pkgs.krb5; };
-
-  kserve = callPackage ./non-by-name/kserve { };
 
   kubernetes-validate = callPackage ../../by-name/ku/kubernetes-validate/unwrapped.nix { };
 
@@ -1608,8 +1288,6 @@ self: super: with self; {
     inherit (pkgs.__splicedPackages) laszip;
   };
 
-  layoutparser = callPackage ./non-by-name/layoutparser { };
-
   ledger =
     (toPythonModule (
       pkgs.ledger.override {
@@ -1621,8 +1299,6 @@ self: super: with self; {
   legacy-cgi = if pythonOlder "3.13" then null else callPackage ./non-by-name/legacy-cgi { };
 
   leidenalg = callPackage ./non-by-name/leidenalg { igraph-c = pkgs.igraph; };
-
-  lerobot = callPackage ./non-by-name/lerobot { };
 
   lesscpy = toPythonModule (pkgs.lesscpy.override { python3Packages = self; });
 
@@ -1706,8 +1382,6 @@ self: super: with self; {
     (p: p.override { python3 = python; })
     (p: p.py)
   ];
-
-  libevdev = callPackage ./non-by-name/libevdev { };
 
   libfdt = toPythonModule (
     pkgs.dtc.override {
@@ -1833,8 +1507,6 @@ self: super: with self; {
 
   libsixel = callPackage ./non-by-name/libsixel { inherit (pkgs) libsixel; };
 
-  libtmux = callPackage ./non-by-name/libtmux { };
-
   libtorrent-rasterbar =
     (toPythonModule (pkgs.libtorrent-rasterbar.override { python3 = python; })).python;
 
@@ -1873,17 +1545,9 @@ self: super: with self; {
       }
     )).py;
 
-  libzfs = callPackage ./non-by-name/libzfs { };
-
-  lida = callPackage ./non-by-name/lida { };
-
   lief = (toPythonModule (pkgs.lief.override { python3 = python; })).py;
 
-  linien-common = callPackage ./non-by-name/linien-common { };
-
   lirc = toPythonModule (pkgs.lirc.override { python3 = python; });
-
-  litellm = callPackage ./non-by-name/litellm { };
 
   llama-index-embeddings-google-genai =
     callPackage ./non-by-name/llama-index-embeddings-google-genai
@@ -1903,14 +1567,6 @@ self: super: with self; {
 
   llm = callPackage ./non-by-name/llm { };
 
-  llm-cmd = callPackage ./non-by-name/llm-cmd { };
-
-  llm-fragments-pdf = callPackage ./non-by-name/llm-fragments-pdf { };
-
-  llm-pdf-to-images = callPackage ./non-by-name/llm-pdf-to-images { };
-
-  llm-tools-sqlite = callPackage ./non-by-name/llm-tools-sqlite { };
-
   lln-libparse = callPackage ./non-by-name/lln-libparse/package.nix { };
 
   llvmlite = callPackage ./non-by-name/llvmlite {
@@ -1918,10 +1574,6 @@ self: super: with self; {
   };
 
   lmdb = callPackage ./non-by-name/lmdb { inherit (pkgs) lmdb; };
-
-  lockfile = callPackage ./non-by-name/lockfile { };
-
-  locust = callPackage ./non-by-name/locust { };
 
   logilab-common = callPackage ./non-by-name/logilab/common.nix {
     pytestCheckHook = pytest7CheckHook;
@@ -1933,21 +1585,9 @@ self: super: with self; {
 
   lsprotocol_2023 = callPackage ./non-by-name/lsprotocol/2023.nix { };
 
-  lupa = callPackage ./non-by-name/lupa { };
-
   lxml = callPackage ./non-by-name/lxml { inherit (pkgs) libxml2 libxslt zlib; };
 
-  lzallright = callPackage ./non-by-name/lzallright { };
-
-  macfsevents = callPackage ./non-by-name/macfsevents { };
-
-  malduck = callPackage ./non-by-name/malduck { };
-
   manifestparser = callPackage ./non-by-name/marionette-harness/manifestparser.nix { };
-
-  manim = callPackage ./non-by-name/manim { };
-
-  manuf = callPackage ./non-by-name/manuf { };
 
   marisa = callPackage ./non-by-name/marisa { inherit (pkgs) marisa; };
 
@@ -1959,8 +1599,6 @@ self: super: with self; {
     callPackage ./non-by-name/markdown-inline-graphviz-extension
       { };
 
-  mat2 = callPackage ./non-by-name/mat2 { };
-
   materialx = toPythonModule (
     pkgs.materialx.override {
       python3Packages = self;
@@ -1971,8 +1609,6 @@ self: super: with self; {
   matplotlib = callPackage ./non-by-name/matplotlib {
     stdenv = if stdenv.hostPlatform.isDarwin then pkgs.clangStdenv else pkgs.stdenv;
   };
-
-  matrix-nio = callPackage ./non-by-name/matrix-nio { };
 
   matscipy = callPackage ./non-by-name/matscipy { };
 
@@ -1993,11 +1629,7 @@ self: super: with self; {
 
   meson-python = callPackage ./non-by-name/meson-python { inherit (pkgs) ninja; };
 
-  mezzanine = callPackage ./non-by-name/mezzanine { };
-
   mhcflurry = callPackage ./non-by-name/mhcflurry { };
-
-  miasm = callPackage ./non-by-name/miasm { };
 
   microsoft-kiota-authentication-azure =
     callPackage ./non-by-name/microsoft-kiota-authentication-azure
@@ -2023,17 +1655,9 @@ self: super: with self; {
     callPackage ./non-by-name/microsoft-security-utilities-secret-masker
       { };
 
-  mido = callPackage ./non-by-name/mido { };
-
-  migen = callPackage ./non-by-name/migen { };
-
   mim-solvers = callPackage ./non-by-name/mim-solvers { inherit (pkgs) mim-solvers; };
 
   mininet-python = (toPythonModule (pkgs.mininet.override { python3 = python; })).py;
-
-  mip = callPackage ./non-by-name/mip { };
-
-  misaki = callPackage ./non-by-name/misaki { };
 
   mistune = callPackage ./non-by-name/mistune { };
 
@@ -2046,14 +1670,6 @@ self: super: with self; {
   mkdocs-git-revision-date-localized-plugin =
     callPackage ./non-by-name/mkdocs-git-revision-date-localized-plugin
       { };
-
-  mkdocs-gitlab = callPackage ./non-by-name/mkdocs-gitlab-plugin { };
-
-  mkdocs-graphviz = callPackage ./non-by-name/mkdocs-graphviz { };
-
-  mkdocs-puml = callPackage ./non-by-name/mkdocs-puml { };
-
-  mlflow = callPackage ./non-by-name/mlflow { };
 
   mlt = toPythonModule (
     pkgs.mlt.override {
@@ -2082,21 +1698,13 @@ self: super: with self; {
 
   molecule-plugins = callPackage ./non-by-name/molecule/plugins.nix { };
 
-  momepy = callPackage ./non-by-name/momepy { };
-
   monosat = callPackage pkgs.monosat.python { };
-
-  mouseinfo = callPackage ./non-by-name/mouseinfo { };
-
-  mozjpeg_lossless_optimization = callPackage ./non-by-name/mozjpeg_lossless_optimization { };
 
   mpl-typst = callPackage ./non-by-name/mpl-typst {
     inherit (pkgs) typst;
   };
 
   mpv = callPackage ./non-by-name/mpv { inherit (pkgs) mpv; };
-
-  mss = callPackage ./non-by-name/mss { };
 
   mujoco-core = callPackage ./non-by-name/mujoco-core { inherit (pkgs) mujoco; };
 
@@ -2459,18 +2067,10 @@ self: super: with self; {
 
   mypy-extensions = callPackage ./non-by-name/mypy/extensions.nix { };
 
-  mypy-protobuf_3_6 = callPackage ./non-by-name/mypy-protobuf_3_6 { };
-
-  mysql-connector-python = callPackage ./non-by-name/mysql-connector-python { };
-
   nanoarrow = callPackage ./non-by-name/nanoarrow {
     zstd-c = pkgs.zstd;
     nanoarrow-c = pkgs.nanoarrow;
   };
-
-  nanobind_3 = callPackage ./non-by-name/nanobind_3 { };
-
-  nanoemoji = callPackage ./non-by-name/nanoemoji { };
 
   nanomsg-python = callPackage ./non-by-name/nanomsg-python {
     inherit (pkgs) nanomsg;
@@ -2481,10 +2081,6 @@ self: super: with self; {
   napalm-hp-procurve = callPackage ./non-by-name/napalm/hp-procurve.nix { };
 
   napalm-ros = callPackage ./non-by-name/napalm/ros.nix { };
-
-  nbconflux = callPackage ./non-by-name/nbconflux { };
-
-  nbconvert = callPackage ./non-by-name/nbconvert { };
 
   ndcurves = callPackage ./non-by-name/ndcurves { inherit (pkgs) ndcurves; };
 
@@ -2501,13 +2097,9 @@ self: super: with self; {
 
   netgen-mesher = toPythonModule (pkgs.netgen.override { python3Packages = self; });
 
-  netmap = callPackage ./non-by-name/netmap { };
-
   neuron-full = pkgs.neuron-full.override { python3 = python; };
 
   neuronpy = toPythonModule neuron-full;
-
-  nextcord = callPackage ./non-by-name/nextcord { };
 
   nftables = callPackage ../../by-name/nf/nftables/python.nix { };
 
@@ -2521,31 +2113,15 @@ self: super: with self; {
     nixl = pkgs.nixl.override { python3Packages = self; };
   };
 
-  nixpkgs-plugin-update = callPackage ./non-by-name/nixpkgs-plugin-update { };
-
-  nltk = callPackage ./non-by-name/nltk { };
-
-  nmcli = callPackage ./non-by-name/nmcli { };
-
   nnpdf = toPythonModule (pkgs.nnpdf.override { python3 = python; });
 
-  nocturne = callPackage ./non-by-name/nocturne { };
-
-  nodriver = callPackage ./non-by-name/nodriver { };
-
   nominatim-api = callPackage ../../by-name/no/nominatim/nominatim-api.nix { };
-
-  notebook = callPackage ./non-by-name/notebook { };
-
-  notify-py = callPackage ./non-by-name/notify-py { };
 
   notmuch = callPackage ./non-by-name/notmuch { inherit (pkgs) notmuch; };
 
   notmuch2 = callPackage ./non-by-name/notmuch2 { inherit (pkgs) notmuch; };
 
   numba = callPackage ./non-by-name/numba { inherit (pkgs.config) cudaSupport; };
-
-  numba-cuda = callPackage ./non-by-name/numba-cuda { };
 
   numbaWithCuda = self.numba.override { cudaSupport = true; };
 
@@ -2555,21 +2131,13 @@ self: super: with self; {
 
   nutpie = callPackage ./non-by-name/nutpie { inherit (pkgs) zstd; };
 
-  nvidia-cutlass-dsl-libs-base = callPackage ./non-by-name/nvidia-cutlass-dsl-libs-base { };
-
   nvidia-cutlass-operators = callPackage ./non-by-name/nvidia-cutlass-operators { };
-
-  nvidia-matmul-heuristics = callPackage ./non-by-name/nvidia-matmul-heuristics { };
-
-  nvidia-ml-py = callPackage ./non-by-name/nvidia-ml-py { };
 
   nvtx = callPackage ./non-by-name/nvtx {
     # Only for its source and versions. Every CUDA package set from 12.9 on has the same source
     # build, while earlier ones (possibly the default cudaPackages) use the redistributable.
     inherit (pkgs.cudaPackages) nvtx;
   };
-
-  nwdiag = callPackage ./non-by-name/nwdiag { };
 
   objgraph = callPackage ./non-by-name/objgraph {
     # requires both the graphviz package and python package
@@ -2578,13 +2146,7 @@ self: super: with self; {
 
   ocrmypdf = callPackage ./non-by-name/ocrmypdf { tesseract = pkgs.tesseract5; };
 
-  omegaconf = callPackage ./non-by-name/omegaconf { };
-
   omniorb = toPythonModule (pkgs.omniorb.override { python3 = self.python; });
-
-  omorfi = callPackage ./non-by-name/omorfi { };
-
-  online-judge-api-client = callPackage ./non-by-name/online-judge-api-client { };
 
   onnx = callPackage ./non-by-name/onnx {
     onnx = pkgs.onnx.override {
@@ -2600,11 +2162,7 @@ self: super: with self; {
     inherit (pkgs) openvino;
   };
 
-  openai-whisper = callPackage ./non-by-name/openai-whisper { };
-
   openbabel = toPythonModule (pkgs.openbabel.override { python3 = python; });
-
-  opencamlib = callPackage ./non-by-name/opencamlib { };
 
   opencv4 = toPythonModule (
     pkgs.opencv4.override {
@@ -2637,8 +2195,6 @@ self: super: with self; {
     }
   );
 
-  opendal = callPackage ./non-by-name/opendal { };
-
   openimageio = toPythonModule (
     pkgs.openimageio.override {
       enablePython = true;
@@ -2669,15 +2225,11 @@ self: super: with self; {
 
   openpaperwork-gtk = callPackage ../../applications/office/paperwork/openpaperwork-gtk.nix { };
 
-  openplantbook-sdk = callPackage ./non-by-name/openplantbook-sdk { };
-
   openrazer = callPackage ./non-by-name/openrazer/pylib.nix { };
 
   openrazer-daemon = callPackage ./non-by-name/openrazer/daemon.nix { };
 
   opensearch-py = callPackage ./non-by-name/opensearch-py { };
-
-  opensfm = callPackage ./non-by-name/opensfm { };
 
   openshadinglanguage = toPythonModule (
     pkgs.openshadinglanguage.override { python3Packages = self; }
@@ -2686,8 +2238,6 @@ self: super: with self; {
   openslide-python = callPackage ./non-by-name/openslide-python {
     inherit (pkgs) openslide;
   };
-
-  openstacksdk = callPackage ./non-by-name/openstacksdk { };
 
   opentelemetry-exporter-http-transport =
     callPackage ./non-by-name/opentelemetry-exporter-http-transport
@@ -2822,45 +2372,19 @@ self: super: with self; {
     openvino-tokenizers-native = pkgs.openvino-tokenizers;
   };
 
-  optax = callPackage ./non-by-name/optax { };
-
   opuslib = callPackage ./non-by-name/opuslib { };
-
-  opuslib-next = callPackage ./non-by-name/opuslib-next { };
-
-  orjson = callPackage ./non-by-name/orjson { };
 
   ortools = callPackage ./non-by-name/ortools {
     or-tools = pkgs.or-tools.override { python3 = self.python; };
   };
 
-  os-service-types = callPackage ./non-by-name/os-service-types { };
-
   osadl-matrix = callPackage ./non-by-name/osadl-matrix/default.nix { };
 
-  oscrypto = callPackage ./non-by-name/oscrypto { };
-
-  oslo-config = callPackage ./non-by-name/oslo-config { };
-
-  oslotest = callPackage ./non-by-name/oslotest { };
-
   osmium = callPackage ./non-by-name/osmium { inherit (pkgs) lz4; };
-
-  osqp = callPackage ./non-by-name/osqp { };
-
-  ots-python = callPackage ./non-by-name/ots-python { };
 
   ouster-sdk = callPackage ./non-by-name/ouster-sdk {
     inherit (pkgs) ouster-sdk;
   };
-
-  outlines-core = callPackage ./non-by-name/outlines-core { };
-
-  overrides = callPackage ./non-by-name/overrides { };
-
-  paddleocr = callPackage ./non-by-name/paddleocr { };
-
-  paddlepaddle = callPackage ./non-by-name/paddlepaddle { };
 
   paho-mqtt = callPackage ./non-by-name/paho-mqtt/default.nix { };
 
@@ -2874,17 +2398,9 @@ self: super: with self; {
 
   paperwork-shell = callPackage ../../applications/office/paperwork/paperwork-shell.nix { };
 
-  patool = callPackage ./non-by-name/patool { };
-
-  pbr = callPackage ./non-by-name/pbr { };
-
   pcapy-ng = callPackage ./non-by-name/pcapy-ng {
     inherit (pkgs) libpcap; # Avoid confusion with python package of the same name
   };
-
-  pdm-backend = callPackage ./non-by-name/pdm-backend { };
-
-  peblar = callPackage ./non-by-name/peblar { };
 
   peewee = callPackage ./non-by-name/peewee { };
 
@@ -2896,8 +2412,6 @@ self: super: with self; {
 
   pelican = callPackage ./non-by-name/pelican { inherit (pkgs) glibcLocales git; };
 
-  pendulum = callPackage ./non-by-name/pendulum { };
-
   petsc4py = toPythonModule (
     pkgs.petsc.override {
       python3Packages = self;
@@ -2907,21 +2421,11 @@ self: super: with self; {
 
   pgpy = callPackage ./non-by-name/pgpy { };
 
-  pgpy-dtc = callPackage ./non-by-name/pgpy-dtc { };
-
-  phonemizer = callPackage ./non-by-name/phonemizer { };
-
-  picologging = callPackage ./non-by-name/picologging { };
-
   pigpio = toPythonModule (
     pkgs.pigpio.override {
       inherit buildPythonPackage;
     }
   );
-
-  pijuice = callPackage ./non-by-name/pijuice { };
-
-  pikepdf = callPackage ./non-by-name/pikepdf { };
 
   pillow = callPackage ./non-by-name/pillow {
     inherit (pkgs)
@@ -2943,16 +2447,10 @@ self: super: with self; {
 
   pip-requirements-parser = callPackage ./non-by-name/pip-requirements-parser { };
 
-  pip-tools = callPackage ./non-by-name/pip-tools { };
-
   piper-phonemize = callPackage ./non-by-name/piper-phonemize {
     onnxruntime-native = pkgs.onnxruntime;
     piper-phonemize-native = pkgs.piper-phonemize;
   };
-
-  pipx = callPackage ./non-by-name/pipx { };
-
-  piqp = callPackage ./non-by-name/piqp { };
 
   pjsua2 =
     (toPythonModule (
@@ -2967,8 +2465,6 @@ self: super: with self; {
   };
 
   plasTeX = callPackage ./non-by-name/plasTeX { };
-
-  playwright = callPackage ./non-by-name/playwright { };
 
   plfit = toPythonModule (
     pkgs.plfit.override {
@@ -2988,8 +2484,6 @@ self: super: with self; {
   # https://github.com/opensteno/plover_plugins_registry/blob/master/unsupported.json
   plover = plover_5;
 
-  plover-stitching = callPackage ./non-by-name/plover-stitching { };
-
   plover_4 = callPackage ./non-by-name/plover/4.nix {
     inherit (pkgs.libsForQt5) wrapQtAppsHook;
   };
@@ -2997,8 +2491,6 @@ self: super: with self; {
   plover_5 = callPackage ./non-by-name/plover/5.nix {
     inherit (pkgs.qt6) qtbase wrapQtAppsHook qtsvg;
   };
-
-  pluggy = callPackage ./non-by-name/pluggy { };
 
   plumed = callPackage ./non-by-name/plumed {
     inherit (pkgs) plumed;
@@ -3008,16 +2500,10 @@ self: super: with self; {
     inherit (pkgs) pocketsphinx;
   };
 
-  poetry-dynamic-versioning = callPackage ./non-by-name/poetry-dynamic-versioning { };
-
-  polygraphy = callPackage ./non-by-name/polygraphy { };
-
   poppler-qt5 = callPackage ./non-by-name/poppler-qt5 {
     inherit (pkgs.qt5) qtbase qmake;
     inherit (pkgs.libsForQt5) poppler;
   };
-
-  pqc-audit = callPackage ./non-by-name/pqc-audit { };
 
   primp = callPackage ./non-by-name/primp { zstd-c = pkgs.zstd; };
 
@@ -3059,10 +2545,6 @@ self: super: with self; {
 
   pulp = callPackage ./non-by-name/pulp { };
 
-  pulsar-client = callPackage ./non-by-name/pulsar-client { };
-
-  pulsectl = callPackage ./non-by-name/pulsectl { };
-
   pulumi-aws-native = callPackage pkgs.pulumiPackages.pulumi-aws-native.sdks.python.override { };
 
   pulumi-azure-native = callPackage pkgs.pulumiPackages.pulumi-azure-native.sdks.python.override { };
@@ -3088,8 +2570,6 @@ self: super: with self; {
     inherit (pkgs) libpcap; # Avoid confusion with python package of the same name
   };
 
-  py-rust-stemmers = callPackage ./non-by-name/py-rust-stemmers { };
-
   py3exiv2 = callPackage ./non-by-name/py3exiv2 { inherit (pkgs) exiv2; };
 
   pyabpoa = toPythonModule (
@@ -3099,17 +2579,11 @@ self: super: with self; {
     }
   );
 
-  pyaes = callPackage ./non-by-name/pyaes { };
-
   pyarrow = callPackage ./non-by-name/pyarrow { inherit (pkgs) arrow-cpp cmake; };
 
   pyaskalono = callPackage ./non-by-name/pyaskalono { inherit (pkgs) zstd; };
 
   pyatspi = callPackage ./non-by-name/pyatspi { inherit (pkgs.buildPackages) meson; };
-
-  pyatv = callPackage ./non-by-name/pyatv { };
-
-  pyautogui = callPackage ./non-by-name/pyautogui { };
 
   pybind11 = callPackage ./non-by-name/pybind11 { };
 
@@ -3117,27 +2591,13 @@ self: super: with self; {
 
   pybluez = callPackage ./non-by-name/pybluez { inherit (pkgs) bluez; };
 
-  pybrowserid = callPackage ./non-by-name/pybrowserid { };
-
-  pybullet = callPackage ./non-by-name/pybullet { };
-
   pycairo = callPackage ./non-by-name/pycairo { inherit (pkgs.buildPackages) meson; };
 
   pycangjie = callPackage ./non-by-name/pycangjie {
     inherit (pkgs.buildPackages) meson;
   };
 
-  pycapnp = callPackage ./non-by-name/pycapnp { };
-
-  pycec = callPackage ./non-by-name/pycec { };
-
   pycflow2dot = callPackage ./non-by-name/pycflow2dot { inherit (pkgs) graphviz; };
-
-  pycrdt = callPackage ./non-by-name/pycrdt { };
-
-  pycryptodome = callPackage ./non-by-name/pycryptodome { };
-
-  pycyphal = callPackage ./non-by-name/pycyphal { };
 
   pydantic = callPackage ./non-by-name/pydantic { };
 
@@ -3151,15 +2611,9 @@ self: super: with self; {
 
   pydeps = callPackage ./non-by-name/pydeps { inherit (pkgs) graphviz; };
 
-  pydivsufsort = callPackage ./non-by-name/pydivsufsort { };
-
   pydot = callPackage ./non-by-name/pydot { inherit (pkgs) graphviz; };
 
-  pydub = callPackage ./non-by-name/pydub { };
-
   pyenchant = callPackage ./non-by-name/pyenchant { inherit (pkgs) enchant_2; };
-
-  pyfuse3 = callPackage ./non-by-name/pyfuse3 { };
 
   pyfwup = callPackage ./non-by-name/pyfwup { inherit (pkgs) libusb1; };
 
@@ -3167,10 +2621,6 @@ self: super: with self; {
 
   # pygame-ce is better maintained upstream, the breaking point was https://github.com/NixOS/nixpkgs/pull/475917#issuecomment-3706940043
   pygame = if pythonAtLeast "3.14" then pygame-ce else pygame-original;
-
-  pygame-ce = callPackage ./non-by-name/pygame-ce { };
-
-  pygame-original = callPackage ./non-by-name/pygame-original { };
 
   pygls = callPackage ./non-by-name/pygls { };
 
@@ -3187,19 +2637,11 @@ self: super: with self; {
 
   pygsl = callPackage ./non-by-name/pygsl { inherit (pkgs) gsl swig; };
 
-  pyhamcrest = callPackage ./non-by-name/pyhamcrest { };
-
-  pyheck = callPackage ./non-by-name/pyheck { };
-
   pyiceberg-core = callPackage ./non-by-name/pyiceberg-core {
     inherit (pkgs) zstd;
   };
 
   pyimpfuzzy = callPackage ./non-by-name/pyimpfuzzy { inherit (pkgs) ssdeep; };
-
-  pyinotify = callPackage ./non-by-name/pyinotify { };
-
-  pykcs11 = callPackage ./non-by-name/pykcs11 { };
 
   pykdtree = callPackage ./non-by-name/pykdtree {
     inherit (pkgs.llvmPackages) openmp;
@@ -3207,27 +2649,15 @@ self: super: with self; {
 
   pykerberos = callPackage ./non-by-name/pykerberos { krb5-c = pkgs.krb5; };
 
-  pylama = callPackage ./non-by-name/pylama { };
-
   pylance = callPackage ./non-by-name/pylance { };
-
-  pylbfgs = callPackage ./non-by-name/pylbfgs { };
-
-  pylddwrap = callPackage ./non-by-name/pylddwrap { };
 
   pylibdmtx = callPackage ./non-by-name/pylibdmtx { };
 
   pylibftdi = callPackage ./non-by-name/pylibftdi { inherit (pkgs) libusb1; };
 
-  pylink-square = callPackage ./non-by-name/pylink-square { };
-
   pyluwen = callPackage ./non-by-name/pyluwen { };
 
-  pymp4 = callPackage ./non-by-name/pymp4 { };
-
   pymssql = callPackage ./non-by-name/pymssql { krb5-c = pkgs.krb5; };
-
-  pymupdf = callPackage ./non-by-name/pymupdf { };
 
   pync = callPackage ./non-by-name/pync { inherit (pkgs) which; };
 
@@ -3261,15 +2691,11 @@ self: super: with self; {
 
   pyocr = callPackage ./non-by-name/pyocr { tesseract = pkgs.tesseract4; };
 
-  pyogg = callPackage ./non-by-name/pyogg { };
-
   pyopen-wakeword = callPackage ./non-by-name/pyopen-wakeword/default.nix { };
 
   pyopengl = callPackage ./non-by-name/pyopengl {
     inherit (pkgs) mesa;
   };
-
-  pyopenjtalk-plus = callPackage ./non-by-name/pyopenjtalk-plus { };
 
   pypamtest = toPythonModule (
     pkgs.libpam-wrapper.override {
@@ -3278,21 +2704,11 @@ self: super: with self; {
     }
   );
 
-  pypandoc = callPackage ./non-by-name/pypandoc { };
-
-  pypass = callPackage ./non-by-name/pypass { };
-
-  pypng = callPackage ./non-by-name/pypng { };
-
   pyprecice = callPackage ./non-by-name/pyprecice {
     precice = pkgs.precice.override {
       python3Packages = self;
     };
   };
-
-  pyproj = callPackage ./non-by-name/pyproj { };
-
-  pypytools = callPackage ./non-by-name/pypytools { };
 
   pyqt5 = callPackage ./non-by-name/pyqt/5.x.nix { inherit (pkgs) mesa; };
 
@@ -3317,14 +2733,6 @@ self: super: with self; {
   pyqt6-webengine = callPackage ./non-by-name/pyqt6-webengine {
     inherit (pkgs) mesa;
   };
-
-  pyqtdarktheme = callPackage ./non-by-name/pyqtdarktheme { };
-
-  pyquaternion = callPackage ./non-by-name/pyquaternion { };
-
-  pyramid-chameleon = callPackage ./non-by-name/pyramid-chameleon { };
-
-  pyrate-limiter_2 = callPackage ./non-by-name/pyrate-limiter_2 { };
 
   pyrealsense2 = toPythonModule (
     pkgs.librealsense.override {
@@ -3361,21 +2769,13 @@ self: super: with self; {
 
   pysaml2 = callPackage ./non-by-name/pysaml2 { inherit (pkgs) xmlsec; };
 
-  pysc2 = callPackage ./non-by-name/pysc2 { };
-
   pyscf = callPackage ./non-by-name/pyscf {
     inherit (pkgs) libxc;
   };
 
-  pysdl2 = callPackage ./non-by-name/pysdl2 { };
-
-  pysdl3 = callPackage ./non-by-name/pysdl3 { };
-
   pysearpc = toPythonModule (pkgs.libsearpc.override { python3 = self.python; });
 
   pyserial = callPackage ./non-by-name/pyserial { };
-
-  pyserial-asyncio-fast = callPackage ./non-by-name/pyserial-asyncio-fast { };
 
   pyshark = callPackage ./non-by-name/pyshark { };
 
@@ -3386,10 +2786,6 @@ self: super: with self; {
   );
 
   pyside6 = toPythonModule (callPackage ./non-by-name/pyside6 { inherit (pkgs) cmake ninja; });
-
-  pyside6-qtads = callPackage ./non-by-name/pyside6-qtads { };
-
-  pysimplesoap = callPackage ./non-by-name/pysimplesoap { };
 
   pyslurm = callPackage ./non-by-name/pyslurm { inherit (pkgs) slurm; };
 
@@ -3412,8 +2808,6 @@ self: super: with self; {
 
   pytelegrambotapi = callPackage ./non-by-name/pyTelegramBotAPI { };
 
-  pytesseract = callPackage ./non-by-name/pytesseract { };
-
   pytest = callPackage ./non-by-name/pytest { };
 
   pytest-asyncio = callPackage ./non-by-name/pytest-asyncio { };
@@ -3422,27 +2816,9 @@ self: super: with self; {
 
   pytest-cache = self.pytestcache; # added 2021-01-04
 
-  pytest-cases = callPackage ./non-by-name/pytest-cases { };
-
-  pytest-cov-stub = callPackage ./non-by-name/pytest-cov-stub { };
-
-  pytest-django_4_12 = callPackage ./non-by-name/pytest-django_4_12 { };
-
-  pytest-forked = callPackage ./non-by-name/pytest-forked { };
-
-  pytest-lazy-fixture = callPackage ./non-by-name/pytest-lazy-fixture { };
-
-  pytest-notebook = callPackage ./non-by-name/pytest-notebook { };
-
-  pytest-pylint = callPackage ./non-by-name/pytest-pylint { };
-
-  pytest-relaxed = callPackage ./non-by-name/pytest-relaxed { };
-
   pytest-services = callPackage ./non-by-name/pytest-services {
     inherit (pkgs) memcached;
   };
-
-  pytest-xdist = callPackage ./non-by-name/pytest-xdist { };
 
   pytest7CheckHook = pytestCheckHook.override { pytest = pytest_7; };
 
@@ -3458,10 +2834,6 @@ self: super: with self; {
 
   python-augeas = callPackage ./non-by-name/python-augeas { inherit (pkgs) augeas; };
 
-  python-etcd = callPackage ./non-by-name/python-etcd { };
-
-  python-flirt = callPackage ./non-by-name/python-flirt { };
-
   python-ldap = callPackage ./non-by-name/python-ldap {
     inherit (pkgs) openldap cyrus_sasl;
   };
@@ -3470,13 +2842,7 @@ self: super: with self; {
     inherit (pkgs) libpcap;
   };
 
-  python-lsp-server = callPackage ./non-by-name/python-lsp-server { };
-
   python-lzo = callPackage ./non-by-name/python-lzo { inherit (pkgs) lzo; };
-
-  python-magic = callPackage ./non-by-name/python-magic { };
-
-  python-manilaclient = callPackage ./non-by-name/python-manilaclient { };
 
   python-mapnik = callPackage ./non-by-name/python-mapnik rec {
     inherit (pkgs)
@@ -3508,17 +2874,7 @@ self: super: with self; {
     inherit (pkgs) mpv;
   };
 
-  python-novaclient = callPackage ./non-by-name/python-novaclient { };
-
-  python-octaviaclient = callPackage ./non-by-name/python-octaviaclient { };
-
   python-pam = callPackage ./non-by-name/python-pam { inherit (pkgs) pam; };
-
-  python-poppler = callPackage ./non-by-name/python-poppler { };
-
-  python-rapidjson = callPackage ./non-by-name/python-rapidjson { };
-
-  python-redis-lock = callPackage ./non-by-name/python-redis-lock { };
 
   python-snap7 = callPackage ./non-by-name/python-snap7 { inherit (pkgs) snap7; };
 
@@ -3534,8 +2890,6 @@ self: super: with self; {
     inherit (pkgs) subunit cppunit check;
   };
 
-  python-vlc = callPackage ./non-by-name/python-vlc { };
-
   python-xapp = callPackage ./non-by-name/python-xapp {
     inherit (pkgs.buildPackages) meson;
     inherit (pkgs)
@@ -3545,14 +2899,6 @@ self: super: with self; {
       xapp
       ;
   };
-
-  python3-eventlib = callPackage ./non-by-name/python3-eventlib { };
-
-  python3-gnutls = callPackage ./non-by-name/python3-gnutls { };
-
-  python3-sipsimple = callPackage ./non-by-name/python3-sipsimple { };
-
-  pythonnet = callPackage ./non-by-name/pythonnet { };
 
   pythonocc-core = toPythonModule (
     callPackage ./non-by-name/pythonocc-core {
@@ -3569,14 +2915,6 @@ self: super: with self; {
 
   pythran = callPackage ./non-by-name/pythran { inherit (pkgs.llvmPackages) openmp; };
 
-  pytomlpp = callPackage ./non-by-name/pytomlpp { };
-
-  pytorch-tokenizers = callPackage ./non-by-name/pytorch-tokenizers { };
-
-  pytubefix = callPackage ./non-by-name/pytubefix { };
-
-  pyturbojpeg = callPackage ./non-by-name/pyturbojpeg { };
-
   pytz = callPackage ./non-by-name/pytz {
     inherit (pkgs) tzdata;
   };
@@ -3587,8 +2925,6 @@ self: super: with self; {
 
   pyvips = callPackage ./non-by-name/pyvips { inherit (pkgs) vips glib; };
 
-  pyvirtualdisplay = callPackage ./non-by-name/pyvirtualdisplay { };
-
   pywbem = callPackage ./non-by-name/pywbem { inherit (pkgs) libxml2; };
 
   pywidevine = callPackage ./non-by-name/pywidevine {
@@ -3596,8 +2932,6 @@ self: super: with self; {
   };
 
   pyxdia = callPackage ./non-by-name/pyxdia { };
-
-  pyzerproc = callPackage ./non-by-name/pyzerproc { };
 
   pyzfs_2_3 = toPythonModule (
     pkgs.zfs_2_3.override {
@@ -3615,8 +2949,6 @@ self: super: with self; {
 
   pyzstd = callPackage ./non-by-name/pyzstd { zstd-c = pkgs.zstd; };
 
-  qasync = callPackage ./non-by-name/qasync { };
-
   qdldl = callPackage ./non-by-name/qdldl { inherit (pkgs) qdldl; };
 
   qemu = callPackage ./non-by-name/qemu { qemu = pkgs.qemu; };
@@ -3627,17 +2959,11 @@ self: super: with self; {
 
   qiskit = callPackage ./non-by-name/qiskit { };
 
-  qiskit-finance = callPackage ./non-by-name/qiskit-finance { };
-
   qrcodegen = callPackage ./non-by-name/qrcodegen { qrcodegen = pkgs.qrcodegen; };
 
   qt6 = pkgs.qt6.override { python3 = self.python; };
 
   qtile = callPackage ./non-by-name/qtile { wlroots = pkgs.wlroots_0_20; };
-
-  quandl = callPackage ./non-by-name/quandl { };
-
-  quickjs = callPackage ./non-by-name/quickjs { };
 
   qutip = callPackage ./non-by-name/qutip { };
 
@@ -3646,8 +2972,6 @@ self: super: with self; {
   };
 
   rapidgzip = callPackage ./non-by-name/rapidgzip { inherit (pkgs) nasm; };
-
-  rapidocr-onnxruntime = callPackage ./non-by-name/rapidocr-onnxruntime { };
 
   rarfile = callPackage ./non-by-name/rarfile { inherit (pkgs) libarchive unrar; };
 
@@ -3661,10 +2985,6 @@ self: super: with self; {
 
   raylib = callPackage ./non-by-name/raylib { inherit (pkgs) raylib; };
 
-  rclone-python = callPackage ./non-by-name/rclone-python { };
-
-  rdbtools = callPackage ./non-by-name/rdbtools { };
-
   rdkit = callPackage ./non-by-name/rdkit {
     boost = pkgs.boost.override {
       enablePython = true;
@@ -3673,10 +2993,6 @@ self: super: with self; {
   };
 
   rds2py = callPackage ./non-by-name/rds2py { };
-
-  readabilipy = callPackage ./non-by-name/readabilipy { };
-
-  readchar = callPackage ./non-by-name/readchar { };
 
   real-ladybug = callPackage ./non-by-name/real-ladybug { };
 
@@ -3692,8 +3008,6 @@ self: super: with self; {
 
   reqif = callPackage ./non-by-name/reqif { };
 
-  requests = callPackage ./non-by-name/requests { };
-
   rgpio = toPythonModule (
     pkgs.lgpio.override {
       inherit buildPythonPackage;
@@ -3701,21 +3015,13 @@ self: super: with self; {
     }
   );
 
-  rich = callPackage ./non-by-name/rich { };
-
-  riscof = callPackage ./non-by-name/riscof { };
-
   rivet = toPythonModule (pkgs.rivet.override { python3 = python; });
-
-  rns = callPackage ./non-by-name/rns { };
 
   rocksdict = callPackage ./non-by-name/rocksdict { inherit (pkgs) zstd; };
 
   root = callPackage ./non-by-name/root {
     inherit (pkgs) root;
   };
-
-  rospkg = callPackage ./non-by-name/rospkg { };
 
   rpm = toPythonModule (pkgs.rpm.override { python3 = self.python; });
 
@@ -3726,16 +3032,6 @@ self: super: with self; {
   rtree = callPackage ./non-by-name/rtree { inherit (pkgs) libspatialindex; };
 
   ruff = callPackage ./non-by-name/ruff { inherit (pkgs) ruff; };
-
-  s2clientprotocol = callPackage ./non-by-name/s2clientprotocol { };
-
-  s3torchconnectorclient = callPackage ./non-by-name/s3torchconnectorclient { };
-
-  safetensors = callPackage ./non-by-name/safetensors { };
-
-  safety = callPackage ./non-by-name/safety { };
-
-  salmon-mail = callPackage ./non-by-name/salmon-mail { };
 
   samplerate = callPackage ./non-by-name/samplerate { inherit (pkgs) libsamplerate; };
 
@@ -3751,31 +3047,17 @@ self: super: with self; {
     sanic-testing = self.sanic-testing.override { sanic = null; };
   };
 
-  sanic-testing = callPackage ./non-by-name/sanic-testing { };
-
-  saxonche = callPackage ./non-by-name/saxonche { };
-
-  scalene = callPackage ./non-by-name/scalene { };
-
-  scancode-toolkit = callPackage ./non-by-name/scancode-toolkit { };
-
   scanpy = callPackage ./non-by-name/scanpy { };
 
   scapy = callPackage ./non-by-name/scapy {
     inherit (pkgs) libpcap; # Avoid confusion with python package of the same name
   };
 
-  scikit-build-core = callPackage ./non-by-name/scikit-build-core { };
-
-  scikits-odes = callPackage ./non-by-name/scikits-odes { };
-
   seccomp = callPackage ./non-by-name/seccomp { };
 
   secp256k1 = callPackage ./non-by-name/secp256k1 { inherit (pkgs) secp256k1; };
 
   segyio = callPackage ./non-by-name/segyio { inherit (pkgs) cmake ninja; };
-
-  selectolax = callPackage ./non-by-name/selectolax { };
 
   selenium = callPackage ./non-by-name/selenium { };
 
@@ -3789,17 +3071,9 @@ self: super: with self; {
 
   sentry-sdk = callPackage ./non-by-name/sentry-sdk/default.nix { };
 
-  seqdiag = callPackage ./non-by-name/seqdiag { };
-
   setuptools-declarative-requirements =
     callPackage ./non-by-name/setuptools-declarative-requirements
       { };
-
-  setuptools-git = callPackage ./non-by-name/setuptools-git { };
-
-  setuptools-rust = callPackage ./non-by-name/setuptools-rust { };
-
-  setuptools-scm = callPackage ./non-by-name/setuptools-scm { };
 
   sherpa-onnx = callPackage ./non-by-name/sherpa-onnx {
     sherpa-onnx = pkgs.sherpa-onnx.override {
@@ -3820,13 +3094,9 @@ self: super: with self; {
     callPackage ./non-by-name/shiboken6-generator { inherit (pkgs) cmake llvmPackages; }
   );
 
-  sigrok = callPackage ./non-by-name/sigrok { };
-
   simple-dftd3 = callPackage ../../development/libraries/science/chemistry/simple-dftd3/python.nix {
     inherit (pkgs) simple-dftd3;
   };
-
-  simpleaudio = callPackage ./non-by-name/simpleaudio { };
 
   simpleitk = callPackage ./non-by-name/simpleitk { inherit (pkgs) itk simpleitk; };
 
@@ -3840,8 +3110,6 @@ self: super: with self; {
       pythonPackages = self;
     }
   );
-
-  skein = callPackage ./non-by-name/skein { };
 
   skytemple-ssb-emulator = callPackage ./non-by-name/skytemple-ssb-emulator {
     inherit (pkgs) libpcap;
@@ -3862,11 +3130,7 @@ self: super: with self; {
     }
   );
 
-  slicer = callPackage ./non-by-name/slicer { };
-
   slixmpp = callPackage ./non-by-name/slixmpp { inherit (pkgs) gnupg; };
-
-  slowapi = callPackage ./non-by-name/slowapi { };
 
   snack = toPythonModule (pkgs.newt.override { python3 = self.python; });
 
@@ -3896,8 +3160,6 @@ self: super: with self; {
     callPackage ./non-by-name/snakemake-interface-storage-plugins
       { };
 
-  snitun = callPackage ./non-by-name/snitun { };
-
   soapysdr = toPythonModule (
     pkgs.soapysdr.override {
       inherit (self) python;
@@ -3914,10 +3176,6 @@ self: super: with self; {
 
   solidpython2 = callPackage ./non-by-name/solidpython2 { };
 
-  soundcard = callPackage ./non-by-name/soundcard { };
-
-  sounddevice = callPackage ./non-by-name/sounddevice { };
-
   sourmash = callPackage ./non-by-name/sourmash { inherit (pkgs) zstd; };
 
   soxr = callPackage ./non-by-name/soxr { libsoxr = pkgs.soxr; };
@@ -3930,15 +3188,11 @@ self: super: with self; {
 
   spacy-models = callPackage ./non-by-name/spacy/models.nix { inherit (pkgs) jq; };
 
-  spacy-transformers = callPackage ./non-by-name/spacy-transformers { };
-
   sphinx = callPackage ./non-by-name/sphinx { };
 
   sphinx-automodapi = callPackage ./non-by-name/sphinx-automodapi {
     graphviz = pkgs.graphviz;
   };
-
-  sphinx-jupyterbook-latex = callPackage ./non-by-name/sphinx-jupyterbook-latex { };
 
   sphinxcontrib-mscgen = callPackage ./non-by-name/sphinxcontrib-mscgen {
     inherit (pkgs) mscgen;
@@ -3948,17 +3202,7 @@ self: super: with self; {
     inherit (pkgs) plantuml;
   };
 
-  splinter = callPackage ./non-by-name/splinter { };
-
-  spyder = callPackage ./non-by-name/spyder { };
-
   sqlalchemy = callPackage ./non-by-name/sqlalchemy { };
-
-  sqlalchemy-file = callPackage ./non-by-name/sqlalchemy-file { };
-
-  sqlalchemy-utc = callPackage ./non-by-name/sqlalchemy-utc { };
-
-  sqlalchemy-utils = callPackage ./non-by-name/sqlalchemy-utils { };
 
   sqlalchemy_1_4 = callPackage ./non-by-name/sqlalchemy/1_4.nix { };
 
@@ -3967,8 +3211,6 @@ self: super: with self; {
   };
 
   ssdeep = callPackage ./non-by-name/ssdeep { inherit (pkgs) ssdeep; };
-
-  sshtunnel = callPackage ./non-by-name/sshtunnel { };
 
   standard-aifc = if pythonAtLeast "3.13" then callPackage ./non-by-name/standard-aifc { } else null;
 
@@ -3998,27 +3240,9 @@ self: super: with self; {
   standard-telnetlib =
     if pythonAtLeast "3.13" then callPackage ./non-by-name/standard-telnetlib { } else null;
 
-  staticjinja = callPackage ./non-by-name/staticjinja { };
-
-  stestr = callPackage ./non-by-name/stestr { };
-
-  stevedore = callPackage ./non-by-name/stevedore { };
-
-  stim = callPackage ./non-by-name/stim { };
-
   stockfish = callPackage ./non-by-name/stockfish { inherit (pkgs) stockfish; };
 
   stp = toPythonModule (pkgs.stp.override { python3 = self.python; });
-
-  streamcontroller-streamdeck = callPackage ./non-by-name/streamcontroller-streamdeck { };
-
-  streamdeck = callPackage ./non-by-name/streamdeck { };
-
-  streaming-form-data = callPackage ./non-by-name/streaming-form-data { };
-
-  strpdatetime = callPackage ./non-by-name/strpdatetime { };
-
-  stytra = callPackage ./non-by-name/stytra { };
 
   symbolic = callPackage ./non-by-name/symbolic { inherit (pkgs) zstd; };
 
@@ -4045,8 +3269,6 @@ self: super: with self; {
     }
   );
 
-  taskw = callPackage ./non-by-name/taskw { };
-
   tblite = callPackage ../../by-name/tb/tblite/python.nix {
     inherit (pkgs)
       tblite
@@ -4060,39 +3282,21 @@ self: super: with self; {
 
   temporalio = callPackage ./non-by-name/temporalio { inherit (pkgs) zstd; };
 
-  tendo = callPackage ./non-by-name/tendo { };
-
   tensorflow = self.tensorflow-bin;
 
   tensorflow-bin = callPackage ./non-by-name/tensorflow/bin.nix {
     inherit (pkgs.config) cudaSupport;
   };
 
-  tensorflow-datasets = callPackage ./non-by-name/tensorflow-datasets { };
-
   tensorflow-estimator-bin = callPackage ./non-by-name/tensorflow-estimator/bin.nix { };
-
-  tensorflow-metadata = callPackage ./non-by-name/tensorflow-metadata { };
 
   tensorflowWithCuda = self.tensorflow.override { cudaSupport = true; };
 
   tensorflowWithoutCuda = self.tensorflow.override { cudaSupport = false; };
 
-  termplotlib = callPackage ./non-by-name/termplotlib { };
-
-  tess = callPackage ./non-by-name/tess { };
-
   textnets = callPackage ./non-by-name/textnets {
     en_core_web_sm = spacy-models.en_core_web_sm;
   };
-
-  textx = callPackage ./non-by-name/textx { };
-
-  thinc = callPackage ./non-by-name/thinc { };
-
-  threat9-test-bed = callPackage ./non-by-name/threat9-test-bed { };
-
-  tiktoken = callPackage ./non-by-name/tiktoken { };
 
   tiledb = callPackage ./non-by-name/tiledb { inherit (pkgs) tiledb; };
 
@@ -4103,8 +3307,6 @@ self: super: with self; {
       pythonSupport = true;
     }
   );
-
-  tinygrad = callPackage ./non-by-name/tinygrad { };
 
   tkinter =
     if isPyPy then
@@ -4166,13 +3368,9 @@ self: super: with self; {
 
   torchWithoutRocm = self.torch.override { rocmSupport = false; };
 
-  torchao = callPackage ./non-by-name/torchao { };
-
   torchaudio = callPackage ./non-by-name/torchaudio { };
 
   torchaudio-bin = callPackage ./non-by-name/torchaudio/bin.nix { };
-
-  torchlensmaker = callPackage ./non-by-name/torchlensmaker { };
 
   torchvision = callPackage ./non-by-name/torchvision { };
 
@@ -4180,11 +3378,7 @@ self: super: with self; {
 
   towncrier = callPackage ./non-by-name/towncrier { inherit (pkgs) git; };
 
-  tpm2-pytss = callPackage ./non-by-name/tpm2-pytss { };
-
   trailbase = callPackage ./non-by-name/trailbase { inherit (pkgs) trailbase; };
-
-  transformer-engine = callPackage ./non-by-name/transformer-engine { };
 
   transformer-engine-jax = transformer-engine.override {
     withJax = true;
@@ -4241,17 +3435,9 @@ self: super: with self; {
     }
   );
 
-  tsfresh = callPackage ./non-by-name/tsfresh { };
-
   tsid = callPackage ./non-by-name/tsid { inherit (pkgs) tsid; };
 
   ttnn = callPackage ./non-by-name/ttnn { inherit (pkgs) tt-metal; };
-
-  twentemilieu = callPackage ./non-by-name/twentemilieu { };
-
-  twilio = callPackage ./non-by-name/twilio { };
-
-  twisted = callPackage ./non-by-name/twisted { };
 
   txtai = callPackage ./non-by-name/txtai { sqlite-vec-c = pkgs.sqlite-vec; };
 
@@ -4634,15 +3820,11 @@ self: super: with self; {
 
   typing = null;
 
-  tyro = callPackage ./non-by-name/tyro { };
-
   ueberzug = callPackage ./non-by-name/ueberzug {
     inherit (pkgs) libx11 libxext;
   };
 
   unicorn = callPackage ./non-by-name/unicorn { inherit (pkgs) unicorn; };
-
-  unidic = callPackage ./non-by-name/unidic { };
 
   units-llnl = callPackage ./non-by-name/units-llnl {
     inherit (pkgs) units-llnl;
@@ -4663,17 +3845,7 @@ self: super: with self; {
 
   uv = callPackage ./non-by-name/uv { inherit (pkgs) uv; };
 
-  uv-build = callPackage ./non-by-name/uv-build { };
-
-  uv-dynamic-versioning = callPackage ./non-by-name/uv-dynamic-versioning { };
-
-  uvicorn = callPackage ./non-by-name/uvicorn { };
-
-  uxsim = callPackage ./non-by-name/uxsim { };
-
   vapoursynth = callPackage ./non-by-name/vapoursynth { inherit (pkgs) vapoursynth; };
-
-  vegafusion = callPackage ./non-by-name/vegafusion { };
 
   vermin = (toPythonModule (pkgs.vermin.override { python3Packages = self; })).overrideAttrs (old: {
     # hack to not cause a rebuild of python3Packages.python-discovery
@@ -4686,8 +3858,6 @@ self: super: with self; {
   vina = callPackage ../../by-name/au/autodock-vina/python-bindings.nix { };
 
   virtualenv-clone = callPackage ./non-by-name/virtualenv-clone { };
-
-  vispy = callPackage ./non-by-name/vispy { };
 
   vivisect = callPackage ./non-by-name/vivisect {
     inherit (pkgs.libsForQt5) wrapQtAppsHook;
@@ -4710,12 +3880,6 @@ self: super: with self; {
 
   wagtail = callPackage ./non-by-name/wagtail { };
 
-  wagtail-factories = callPackage ./non-by-name/wagtail-factories { };
-
-  waitress-django = callPackage ./non-by-name/waitress-django { };
-
-  wallet-py3k = callPackage ./non-by-name/wallet-py3k { };
-
   warp-lang = callPackage ./non-by-name/warp-lang {
     # warp targets LLVM 22 in its build-from-source path (build_llvm.py clones llvmorg-22.x)
     stdenv = if stdenv.hostPlatform.isDarwin then pkgs.llvmPackages_22.stdenv else pkgs.stdenv;
@@ -4735,13 +3899,7 @@ self: super: with self; {
 
   wasmtime = callPackage ../../by-name/wa/wasmtime/python.nix { };
 
-  wavefile = callPackage ./non-by-name/wavefile { };
-
-  weasyprint = callPackage ./non-by-name/weasyprint { };
-
   webrtc-noise-gain = callPackage ./non-by-name/webrtc-noise-gain { };
-
-  webrtcvad = callPackage ./non-by-name/webrtcvad { };
 
   wfuzz = callPackage ./non-by-name/wfuzz { };
 
@@ -4749,10 +3907,6 @@ self: super: with self; {
     ffmpeg = pkgs.ffmpeg-headless;
     ctranslate2-cpp = pkgs.ctranslate2;
   };
-
-  whool = callPackage ./non-by-name/whool { };
-
-  wokkel = callPackage ./non-by-name/wokkel { };
 
   wtforms = callPackage ./non-by-name/wtforms { };
 
@@ -4788,17 +3942,9 @@ self: super: with self; {
 
   xrootd = callPackage ./non-by-name/xrootd { inherit (pkgs) xrootd; };
 
-  xsdata = callPackage ./non-by-name/xsdata { };
-
-  yalexs = callPackage ./non-by-name/yalexs { };
-
   yoda = toPythonModule (pkgs.yoda.override { python3 = python; });
 
   yosys = toPythonModule (pkgs.yosys.override { python3 = python; });
-
-  youseedee = callPackage ./non-by-name/youseedee { };
-
-  youtube-search-python = callPackage ./non-by-name/youtube-search-python { };
 
   yq = callPackage ./non-by-name/yq { inherit (pkgs) jq; };
 
@@ -4808,19 +3954,9 @@ self: super: with self; {
 
   z3-solver = (toPythonModule (pkgs.z3.override { python3Packages = self; })).python;
 
-  zconfig = callPackage ./non-by-name/zconfig { };
-
   zeek = (toPythonModule (pkgs.zeek.broker.override { python3 = python; })).py;
 
   zeitgeist = (toPythonModule (pkgs.zeitgeist.override { python3 = python; })).py;
-
-  ziafont = callPackage ./non-by-name/ziafont { };
-
-  ziamath = callPackage ./non-by-name/ziamath { };
-
-  zigpy-zboss = callPackage ./non-by-name/zigpy-zboss { };
-
-  zigpy-znp = callPackage ./non-by-name/zigpy-znp { };
 
   zlib-ng = callPackage ./non-by-name/zlib-ng { inherit (pkgs) zlib-ng; };
 
